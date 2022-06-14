@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mymobileapplication" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Cooking Recipes in your pocket"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyMobileApplication" >
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:exported="false" />
+        <activity
+            android:name=".UserprofileActivity"
+            android:label="Your profile"
+            android:exported="false" />
+        <activity
+            android:name=".SearchRecipesActivity"
+            android:label="Search for recipes"
+            android:exported="false" />
+        <activity
+            android:name=".GroceryListActivity"
+            android:exported="false"
+            android:label="GroceryLists"
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
+        <activity
+            android:name=".AddRecipeActivity"
+            android:exported="false"
+            android:label="Add a new recipe"
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Main page" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

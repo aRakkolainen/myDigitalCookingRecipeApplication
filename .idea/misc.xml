@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.175390625" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15334699453551912" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_add_recipe.xml" value="0.25" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_login.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_search_recipes.xml" value="0.2798913043478261" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_second.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_settings.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_shopping_list.xml" value="0.2857789855072464" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_userprofile.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/example.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/grocery_list_items.xml" value="0.33" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/list_item.xml" value="0.22" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/method_list.xml" value="0.2563405797101449" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list_ingredients.xml" value="0.26403985507246375" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/settings_activity.xml" value="0.2033514492753623" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
