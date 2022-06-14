@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
     LayoutInflater mInFlater;
     ArrayList<Ingredient> ingredientArrayList;
-    ArrayList<String> methods;
     Context context;
     public CustomAdapter(Context c, ArrayList<Ingredient> i) {
         context = c;

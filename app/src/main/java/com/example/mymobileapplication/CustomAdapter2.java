@@ -14,7 +14,7 @@ import java.util.ArrayList;
         Context context;
         public CustomAdapter2(Context c, ArrayList<String> m) {
             context = c;
-            methods = m;
+            methods=m;
             mInFlater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         @Override
@@ -36,11 +36,13 @@ import java.util.ArrayList;
         public View getView(int i, View view, ViewGroup viewGroup) {
             View v = view;
             if (v == null) {
-                v = mInFlater.inflate(R.layout.method_list, null);
+                v = mInFlater.inflate(R.layout.my_detailed_list_methods, null);
             }
             TextView methodInfo = (TextView) v.findViewById(R.id.methodTextView);
             try {
-                methodInfo.setText(methods.get(i));
+                if (methods.get(i).isEmpty() != true) {
+                    methodInfo.setText(i + 1 + methods.get(i));
+                }
             } catch (NullPointerException e) {
                 System.out.println("You didn't give a value");
             }

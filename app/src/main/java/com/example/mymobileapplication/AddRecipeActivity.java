@@ -42,8 +42,9 @@ public class AddRecipeActivity extends AppCompatActivity {
                 recipeTitle = addRecipeTitle.getText().toString();
                 ingredientName = addIngredientName.getText().toString();
                 ingredientAmount = addIngredientAmount.getText().toString();
-                ingredient = new Ingredient(ingredientName, ingredientAmount);
                 method = addMethod.getText().toString();
+                //System.out.println("You gave instructions: " + method);
+                ingredient = new Ingredient(ingredientName, ingredientAmount);
                 try {
                     methods.add(method);
                 } catch (NullPointerException e) {

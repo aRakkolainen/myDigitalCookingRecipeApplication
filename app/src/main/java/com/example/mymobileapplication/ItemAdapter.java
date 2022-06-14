@@ -1,12 +1,22 @@
+// Created by: Aino Räkköläinen
+// Sources for this code:
+// How to create a strikethrough text when checkBox is checked:
+// https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
+
+
 package com.example.mymobileapplication;
 
 import static java.lang.Integer.parseInt;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,6 +59,20 @@ public class ItemAdapter extends BaseAdapter {
             nameTextView.setText(groceryItemArrayList.get(i).getNumber() + " " + groceryItemArrayList.get(i).getName() + "s");
         } else {
             nameTextView.setText(groceryItemArrayList.get(i).getNumber() + " " + groceryItemArrayList.get(i).getName());
+        }
+        CheckBox checkBoxItem = (CheckBox) v.findViewById(R.id.checkBox);
+        checkBoxItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b == true) {
+                    nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                } else {
+                    nameTextView.setPaintFlags(nameTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                }
+            }
+        });
+        if (checkBoxItem.isChecked() == true) {
+            System.out.println("Hello!");
         }
         return v;
     }

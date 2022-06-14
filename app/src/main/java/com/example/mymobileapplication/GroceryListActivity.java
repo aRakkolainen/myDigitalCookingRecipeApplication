@@ -13,22 +13,15 @@ import static java.lang.Integer.parseInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class GroceryListActivity extends AppCompatActivity {
     String addedItem;
@@ -56,14 +49,16 @@ public class GroceryListActivity extends AppCompatActivity {
         EditText itemName = (EditText) findViewById(R.id.editTextItemName);
         Button addItemBtn = (Button) findViewById(R.id.addItemBtn);
         EditText amountOfItems = (EditText) findViewById(R.id.editTextAmountOfItems);
-        TextView addingItemProcessInfo = (TextView) findViewById(R.id.addingProcessInfo);
+        TextView progressInfo = (TextView) findViewById(R.id.textViewProgressInfo);
+
         // Removing an item from list components
         //EditText itemToRemove = (EditText) findViewById(R.id.itemToRemove);
         Button removeItemBtn = (Button) findViewById(R.id.removeItemBtn);
-        TextView removingItemProcessInfo = (TextView) findViewById(R.id.removingProcessInfo);
         //Updating the list -components:
         Button updateListBtn = (Button) findViewById(R.id.updateTheListBtn);
-        TextView updatingProcessInfo = (TextView) findViewById(R.id.updatingProgress);
+        // Changing item amount button
+        Button increaseItemAmount = (Button) findViewById(R.id.increaseAmountBtn);
+        Button decreaseItemAmount = (Button) findViewById(R.id.decreaseAmountBtn);
         // Setting onClickListeners for both buttons:
 
         addItemBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,31 +71,32 @@ public class GroceryListActivity extends AppCompatActivity {
 
                 }
                 if ( (addedItem.isEmpty() == true)) {
-                    addingItemProcessInfo.setText("Adding failed, you need to add the name of the item first!");
+                    progressInfo.setText("Adding failed, you need to add the name of the item first!");
                 } else if (amountOfAddedItem == 0){
-                    addingItemProcessInfo.setText("Adding failed, you need to at least 1 item!");
+                    progressInfo.setText("Adding failed, you need to at least 1 item!");
                 } else {
                     item = new GroceryItem(addedItem, amountOfAddedItem);
                     if (!groceryList.contains(item)) {
                         if (item.getNumber() == 1) {
                             progress ="You added " + item.getNumber() + " " + item.getName() + " successfully in the list." ;
-                            addingItemProcessInfo.setText(progress);
+                            progressInfo.setText(progress);
+                            //addingItemProcessInfo.setText(progress);
                         } else {
                             progress = "You added " + amountOfAddedItem + " " + addedItem + "s" + " successfully in the list.";
-                            addingItemProcessInfo.setText(progress);
+                            progressInfo.setText(progress);
                         }
                         groceryList.add(item);
                     } else {
                         progress="Adding failed, " + item.getName() + "is already in the list.";
-                        addingItemProcessInfo.setText(progress);
+                        progressInfo.setText(progress);
                     }
                 }
-                addingItemProcessInfo.setVisibility(View.VISIBLE);
+                progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
-                        addingItemProcessInfo.setVisibility(View.GONE);
+                        progressInfo.setVisibility(View.GONE);
                     }
                 }, 3500);
             }
@@ -123,18 +119,18 @@ public class GroceryListActivity extends AppCompatActivity {
                         } else {
                             progress = '"' + removedItem + '"' + " is not in the list.";
                         }
-                        removingItemProcessInfo.setText(progress);
+                        progressInfo.setText(progress);
                     }
                 } else {
                     progress="Your grocery list is empty so there was nothing to remove";
-                    removingItemProcessInfo.setText(progress);
+                    progressInfo.setText(progress);
                 }
-                removingItemProcessInfo.setVisibility(View.VISIBLE);
+                progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
-                        removingItemProcessInfo.setVisibility(View.GONE);
+                        progressInfo.setVisibility(View.GONE);
                     }
                 }, 3500);
             }
@@ -146,16 +142,45 @@ public class GroceryListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ItemAdapter itemAdapter = new ItemAdapter(context, groceryList);
                 myGroceryListView.setAdapter(itemAdapter);
-                updatingProcessInfo.setText("The list updated successfully.");
+                progressInfo.setText("The list updated successfully.");
 
-                updatingProcessInfo.setVisibility(View.VISIBLE);
+                progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
-                        updatingProcessInfo.setVisibility(View.GONE);
+                        progressInfo.setVisibility(View.GONE);
                     }
                 }, 3500);
+            }
+        });
+
+        decreaseItemAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String itemToBeDecreased = itemName.getText().toString();
+                int decreaseValue = parseInt(amountOfItems.getText().toString());
+                if (groceryList.size() != 0) {
+                    for (int i=0; i < groceryList.size(); i++) {
+                        if (groceryList.get(i).getName().equals(itemToBeDecreased)) {
+                            groceryList.get(i).setNumber(groceryList.get(i).getNumber() - decreaseValue);
+                        };
+                    }
+                }
+            }
+        });
+        increaseItemAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String itemToBeIncreased = itemName.getText().toString();
+                int increaseValue = parseInt(amountOfItems.getText().toString());
+                if (groceryList.size() != 0) {
+                    for (int i=0; i < groceryList.size(); i++) {
+                        if (groceryList.get(i).getName().equals(itemToBeIncreased)) {
+                            groceryList.get(i).setNumber(groceryList.get(i).getNumber() + increaseValue);
+                        };
+                    }
+                }
             }
         });
     }
