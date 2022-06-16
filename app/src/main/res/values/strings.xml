@@ -36,4 +36,16 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="here_you_can_make_and_update_your_own_grocery_list">Here you can make and update your own grocery list</string>
+    <string name="your_grocery_list">Your grocery list</string>
+    <string name="increase_amount">Increase amount</string>
+    <string name="decrease_amount">Decrease amount</string>
+    <string name="add_item">Add item</string>
+    <string name="remove_item">Remove item</string>
+    <string name="save_the_name">Save the name</string>
+    <string name="give_the_amount_of_the_item">Give the amount of the item</string>
+    <string name="give_the_name_of_item">Give the name of item</string>
+    <string name="give_name_for_your_list">Give name for your list</string>
+    <string name="update_the_list">Update the list</string>
+    <string name="title_activity_login2">LoginActivity2</string>
 </resources>

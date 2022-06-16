@@ -16,6 +16,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class GroceryListActivity extends AppCompatActivity {
+    String groceryListName;
     String addedItem;
     String progress;
     String removedItem;
@@ -45,12 +48,15 @@ public class GroceryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_list);
         myGroceryListView = (ListView) findViewById(R.id.groceriesList);
         // Defining our buttons and editText-views:
+        EditText listName = (EditText) findViewById(R.id.editTextListName);
+        Button saveBtn = (Button) findViewById(R.id.saveBtn);
+        Button clearAllBtn = (Button) findViewById(R.id.clearAllBtn);
         // Adding an item to list components
         EditText itemName = (EditText) findViewById(R.id.editTextItemName);
         Button addItemBtn = (Button) findViewById(R.id.addItemBtn);
         EditText amountOfItems = (EditText) findViewById(R.id.editTextAmountOfItems);
         TextView progressInfo = (TextView) findViewById(R.id.textViewProgressInfo);
-
+        TextView groceryListNameText = (TextView) findViewById(R.id.groceryListTextView);
         // Removing an item from list components
         //EditText itemToRemove = (EditText) findViewById(R.id.itemToRemove);
         Button removeItemBtn = (Button) findViewById(R.id.removeItemBtn);
@@ -60,7 +66,13 @@ public class GroceryListActivity extends AppCompatActivity {
         Button increaseItemAmount = (Button) findViewById(R.id.increaseAmountBtn);
         Button decreaseItemAmount = (Button) findViewById(R.id.decreaseAmountBtn);
         // Setting onClickListeners for both buttons:
-
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                groceryListName = listName.getText().toString();
+                groceryListNameText.setText(groceryListName);
+            }
+        });
         addItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,20 +88,14 @@ public class GroceryListActivity extends AppCompatActivity {
                     progressInfo.setText("Adding failed, you need to at least 1 item!");
                 } else {
                     item = new GroceryItem(addedItem, amountOfAddedItem);
-                    if (!groceryList.contains(item)) {
-                        if (item.getNumber() == 1) {
-                            progress ="You added " + item.getNumber() + " " + item.getName() + " successfully in the list." ;
-                            progressInfo.setText(progress);
-                            //addingItemProcessInfo.setText(progress);
-                        } else {
-                            progress = "You added " + amountOfAddedItem + " " + addedItem + "s" + " successfully in the list.";
-                            progressInfo.setText(progress);
-                        }
-                        groceryList.add(item);
+                    if (item.getNumber() == 1) {
+                        progress ="You added " + item.getNumber() + " " + item.getName() + " successfully in the list." ;
+                        //addingItemProcessInfo.setText(progress);
                     } else {
-                        progress="Adding failed, " + item.getName() + "is already in the list.";
-                        progressInfo.setText(progress);
+                        progress = "You added " + amountOfAddedItem + " " + addedItem + "s" + " successfully in the list.";
                     }
+                    progressInfo.setText(progress);
+                    groceryList.add(item);
                 }
                 progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
@@ -142,8 +148,8 @@ public class GroceryListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ItemAdapter itemAdapter = new ItemAdapter(context, groceryList);
                 myGroceryListView.setAdapter(itemAdapter);
+                ((BaseAdapter)myGroceryListView.getAdapter()).notifyDataSetChanged();
                 progressInfo.setText("The list updated successfully.");
-
                 progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
 
@@ -152,6 +158,13 @@ public class GroceryListActivity extends AppCompatActivity {
                         progressInfo.setVisibility(View.GONE);
                     }
                 }, 3500);
+            }
+        });
+
+        clearAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                groceryList.clear();
             }
         });
 
