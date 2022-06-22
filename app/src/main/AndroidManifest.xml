@@ -44,6 +44,11 @@
             android:exported="false"
             android:label="Add a new recipe"
             android:windowSoftInputMode="stateVisible|adjustNothing" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="Main page"
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
     </application>
 
 </manifest>
