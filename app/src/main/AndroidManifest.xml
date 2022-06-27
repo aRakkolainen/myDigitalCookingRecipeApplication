@@ -10,22 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMobileApplication">
         <activity
+            android:name=".DisplayRecipeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustNothing"/>
+        <activity
             android:name=".SignUpActivity"
             android:exported="false"
-            android:label="Sign up"/>
+            android:label="Sign up"
+            android:windowSoftInputMode="stateVisible|adjustNothing"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="Log in" >
+            android:label="Log in"
+            android:windowSoftInputMode="stateVisible|adjustNothing">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
-            android:label="Settings" />
+            android:label="Settings"
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".UserprofileActivity"
             android:exported="false"
@@ -33,7 +41,8 @@
         <activity
             android:name=".SearchRecipesActivity"
             android:exported="false"
-            android:label="Search for recipes" />
+            android:label="Search for recipes"
+            android:windowSoftInputMode="stateVisible|adjustNothing"/>
         <activity
             android:name=".GroceryListActivity"
             android:exported="false"

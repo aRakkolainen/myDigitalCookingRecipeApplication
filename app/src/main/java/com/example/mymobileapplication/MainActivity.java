@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent createRecipeIntent = new Intent(context, AddRecipeActivity.class);
+                createRecipeIntent.putExtra("username", username);
                 startActivity(createRecipeIntent);
             }
         });
@@ -92,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent openUserprofileIntent = new Intent(context, UserprofileActivity.class);
+                openUserprofileIntent.putExtra("Username", username);
+                openUserprofileIntent.putExtra("Email", email);
                 startActivity(openUserprofileIntent);
             }
         });

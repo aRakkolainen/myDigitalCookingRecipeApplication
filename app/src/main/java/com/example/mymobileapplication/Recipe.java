@@ -4,23 +4,23 @@ import java.util.ArrayList;
 
 public class Recipe {
     String name;
-    ArrayList<String> ingredients;
-    ArrayList<String> directions;
-    Recipe(String n, ArrayList<String> i, ArrayList<String> d) {
+    ArrayList<Ingredient> ingredients;
+    ArrayList<String> method;
+    Recipe(String n, ArrayList<Ingredient> i, ArrayList<String> m) {
         name=n;
         ingredients=i;
-        directions=d;
+        method=m;
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<String> getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public ArrayList<String> getDirections() {
-        return directions;
+    public ArrayList<String> getMethod() {
+        return method;
     }
 }
