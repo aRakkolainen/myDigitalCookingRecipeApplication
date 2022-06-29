@@ -2,7 +2,8 @@
 // Sources for this code:
 // How to create a strikethrough text when checkBox is checked:
 // https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
-
+// How to display HashMap in ListView:
+// https://stackoverflow.com/questions/19466757/hashmap-to-listview
 
 package com.example.mymobileapplication;
 
@@ -20,27 +21,33 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ItemAdapter extends BaseAdapter {
+public class ItemHashMapAdapter extends BaseAdapter {
     LayoutInflater mInFlater;
     //String[] items;
     //String[] amounts;
-    ArrayList<GroceryItem> groceryItemArrayList;
+    //ArrayList<GroceryItem> groceryItemArrayList;
+    ArrayList myGroceries;
+    HashMap<String, GroceryItem> groceryItemHashMap;
     Context context;
 
-    public ItemAdapter(Context c, ArrayList<GroceryItem> g) {
+    public ItemHashMapAdapter(Context c, HashMap<String, GroceryItem> g) {
         context = c;
-        groceryItemArrayList = g;
+        myGroceries = new ArrayList();
+        myGroceries.addAll(g.entrySet());
+        //groceryItemHashMap = g;
         mInFlater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return groceryItemArrayList.size();
+        return myGroceries.size();
     }
 
     @Override
-    public Object getItem(int i) {
-        return groceryItemArrayList.get(i);
+    public HashMap.Entry<String, GroceryItem> getItem(int i) {
+        return (HashMap.Entry) myGroceries.get(i) ;
     }
 
     @Override
@@ -55,11 +62,14 @@ public class ItemAdapter extends BaseAdapter {
             v = mInFlater.inflate(R.layout.grocery_list_items, null);
         }
         TextView nameTextView = (TextView) v.findViewById(R.id.itemNameTextView);
-        if (groceryItemArrayList.get(i).getNumber() > 1) {
-            nameTextView.setText(groceryItemArrayList.get(i).getNumber() + " " + groceryItemArrayList.get(i).getName() + "s");
+        HashMap.Entry<String, GroceryItem> item = getItem(i);
+        nameTextView.setText(item.getValue().getNumber() + item.getKey());
+        if (item.getValue().getNumber() > 1) {
+            nameTextView.setText(item.getValue().getNumber() + " " + item.getKey() + "s");
         } else {
-            nameTextView.setText(groceryItemArrayList.get(i).getNumber() + " " + groceryItemArrayList.get(i).getName());
+            nameTextView.setText(item.getValue().getNumber() + " " + item.getKey());
         }
+
         CheckBox checkBoxItem = (CheckBox) v.findViewById(R.id.checkBox);
         checkBoxItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -76,3 +86,4 @@ public class ItemAdapter extends BaseAdapter {
         return v;
     }
 }
+

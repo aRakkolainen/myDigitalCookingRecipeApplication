@@ -48,4 +48,6 @@
     <string name="give_name_for_your_list">Give name for your list</string>
     <string name="update_the_list">Update the list</string>
     <string name="title_activity_login2">LoginActivity2</string>
+    <string name="email">Email:</string>
+    <string name="username">Username:</string>
 </resources>

@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-    public class CustomAdapter2 extends BaseAdapter {
+    public class MethodAdapter extends BaseAdapter {
         LayoutInflater mInFlater;
         ArrayList<String> methods;
         Context context;
-        public CustomAdapter2(Context c, ArrayList<String> m) {
+        public MethodAdapter(Context c, ArrayList<String> m) {
             context = c;
             methods=m;
             mInFlater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -41,7 +41,7 @@ import java.util.ArrayList;
             TextView methodInfo = (TextView) v.findViewById(R.id.methodTextView);
             try {
                 if (methods.get(i).isEmpty() != true) {
-                    methodInfo.setText(i + 1 + methods.get(i));
+                    methodInfo.setText(i + 1 + ". " + methods.get(i));
                 }
             } catch (NullPointerException e) {
                 System.out.println("You didn't give a value");

@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GroceryListActivity extends AppCompatActivity {
     String groceryListName;
@@ -34,6 +35,7 @@ public class GroceryListActivity extends AppCompatActivity {
     int amountOfRemovedItem;
     ListView myGroceryListView;
     ArrayList<GroceryItem> groceryList = new ArrayList<>();
+    HashMap<String,GroceryItem> groceryItemHashMap = new HashMap<>();
     GroceryItem item;
     String[] items;
     String[] amounts;
@@ -95,7 +97,8 @@ public class GroceryListActivity extends AppCompatActivity {
                         progress = "You added " + amountOfAddedItem + " " + addedItem + "s" + " successfully in the list.";
                     }
                     progressInfo.setText(progress);
-                    groceryList.add(item);
+                    //groceryList.add(item);
+                    groceryItemHashMap.put(addedItem, item);
                 }
                 progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
@@ -111,26 +114,19 @@ public class GroceryListActivity extends AppCompatActivity {
         removeItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (groceryList.size() != 0) {
+                if (groceryItemHashMap.size() != 0) {
                     removedItem = itemName.getText().toString();
                     amountOfRemovedItem = parseInt((amountOfItems.getText().toString()));
-                    for (int i = 0; i < groceryList.size(); i++) {
-                        if (groceryList.get(i).getName().equals(removedItem)) {
-                            if (groceryList.get(i).getNumber() == 1) {
-                                progress = "You removed " + groceryList.get(i).getName() + " successfully from the list.";
-                            } else {
-                                progress = "You removed " + groceryList.get(i).getName() + "s successfully from the list.";
-                            }
-                            groceryList.remove(groceryList.get(i));
-                        } else {
-                            progress = '"' + removedItem + '"' + " is not in the list.";
-                        }
-                        progressInfo.setText(progress);
+                    if (groceryItemHashMap.get(removedItem).getNumber() == 1) {
+                        progress = "You removed " + groceryItemHashMap.get(removedItem).getName() + " successfully from the list.";
+                    } else {
+                        progress = "You removed " + groceryItemHashMap.get(removedItem).getName() + "s successfully from the list.";
                     }
+                    groceryItemHashMap.remove(removedItem);
                 } else {
-                    progress="Your grocery list is empty so there was nothing to remove";
-                    progressInfo.setText(progress);
+                    progress = "Your list is empty!";
                 }
+                progressInfo.setText(progress);
                 progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {
 
@@ -146,8 +142,10 @@ public class GroceryListActivity extends AppCompatActivity {
         updateListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ItemAdapter itemAdapter = new ItemAdapter(context, groceryList);
-                myGroceryListView.setAdapter(itemAdapter);
+                //ItemAdapter itemAdapter = new ItemAdapter(context, groceryList);
+                //myGroceryListView.setAdapter(itemAdapter);
+                ItemHashMapAdapter itemHashMapAdapter = new ItemHashMapAdapter(context, groceryItemHashMap);
+                myGroceryListView.setAdapter(itemHashMapAdapter);
                 ((BaseAdapter)myGroceryListView.getAdapter()).notifyDataSetChanged();
                 progressInfo.setText("The list updated successfully.");
                 progressInfo.setVisibility(View.VISIBLE);
@@ -164,7 +162,7 @@ public class GroceryListActivity extends AppCompatActivity {
         clearAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                groceryList.clear();
+                groceryItemHashMap.clear();
             }
         });
 
@@ -173,12 +171,14 @@ public class GroceryListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String itemToBeDecreased = itemName.getText().toString();
                 int decreaseValue = parseInt(amountOfItems.getText().toString());
-                if (groceryList.size() != 0) {
-                    for (int i=0; i < groceryList.size(); i++) {
+                if (groceryItemHashMap.size() != 0) {
+                    int newValue = groceryItemHashMap.get(itemToBeDecreased).getNumber() - decreaseValue;
+                    groceryItemHashMap.get(itemToBeDecreased).setNumber(newValue);
+                    /* for (int i=0; i < groceryList.size(); i++) {
                         if (groceryList.get(i).getName().equals(itemToBeDecreased)) {
                             groceryList.get(i).setNumber(groceryList.get(i).getNumber() - decreaseValue);
                         };
-                    }
+                    }*/
                 }
             }
         });
@@ -187,12 +187,9 @@ public class GroceryListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String itemToBeIncreased = itemName.getText().toString();
                 int increaseValue = parseInt(amountOfItems.getText().toString());
-                if (groceryList.size() != 0) {
-                    for (int i=0; i < groceryList.size(); i++) {
-                        if (groceryList.get(i).getName().equals(itemToBeIncreased)) {
-                            groceryList.get(i).setNumber(groceryList.get(i).getNumber() + increaseValue);
-                        };
-                    }
+                if (groceryItemHashMap.size() != 0) {
+                    int newValue = groceryItemHashMap.get(itemToBeIncreased).getNumber() + increaseValue;
+                    groceryItemHashMap.get(itemToBeIncreased).setNumber(newValue);
                 }
             }
         });

@@ -3,6 +3,7 @@ package com.example.mymobileapplication;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -57,13 +58,18 @@ public class AddRecipeActivity extends AppCompatActivity {
                 ingredientAmount = addIngredientAmount.getText().toString();
                 method = addMethod.getText().toString();
                 //System.out.println("You gave instructions: " + method);
-                ingredient = new Ingredient(ingredientName, ingredientAmount);
+                if (ingredientName.isEmpty() != true && ingredientAmount.isEmpty() != true) {
+                    ingredient = new Ingredient(ingredientName, ingredientAmount);
+                    ingredients.add(ingredient);
+                }
                 try {
-                    methods.add(method);
+                    if (method.isEmpty() != true) {
+                        methods.add(method);
+                    }
                 } catch (NullPointerException e) {
                     System.out.println("No value!");
                 }
-                ingredients.add(ingredient);
+                //ingredients.add(ingredient);
             }
         });
         previewBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,9 +79,20 @@ public class AddRecipeActivity extends AppCompatActivity {
                 recipeTitleTextView.setText(recipeTitle);
                 ingredientsListView.setAdapter(customAdapter);
                 if (methods.size() != 0) {
-                    CustomAdapter2 customAdapter2 = new CustomAdapter2(context, methods);
-                    methodsListView.setAdapter(customAdapter2);
+                    MethodAdapter methodAdapter = new MethodAdapter(context, methods);
+                    methodsListView.setAdapter(methodAdapter);
                 }
+                ingredientsListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        ingredients.remove(i);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
             }
         });
         saveRecipeBtn.setOnClickListener(new View.OnClickListener() {

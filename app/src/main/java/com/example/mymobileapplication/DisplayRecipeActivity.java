@@ -23,7 +23,11 @@ import java.util.ArrayList;
 public class DisplayRecipeActivity extends AppCompatActivity {
     String recipeTitle;
     String filename;
-    String line;
+    String line_ingredients;
+    String line_method;
+    String[] ingredientsArray;
+    String[] methodArray;
+
     ArrayList<String> ingredients = new ArrayList<>();
     ArrayList<String> methods = new ArrayList<>();
     @Override
@@ -42,27 +46,31 @@ public class DisplayRecipeActivity extends AppCompatActivity {
             fileInputStream = openFileInput(filename);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader br = new BufferedReader(inputStreamReader);
-            while ((line = br.readLine()) != null) {
-                String[] lines = line.split(";");
-                System.out.println(lines[0]);
-                //System.out.println(line);
-                //System.out.println(lines[0]);
-
-
-
+            recipeTitle = br.readLine();
+            line_ingredients = br.readLine();
+            line_method = br.readLine();
+            ingredientsArray = line_ingredients.split(";");
+            methodArray = line_method.split(";");
+            for (int i=0; i < ingredientsArray.length; i++) {
+                ingredients.add(ingredientsArray[i]);
             }
+
+            for (int i=0; i < methodArray.length; i++) {
+                methods.add(methodArray[i]);
+            }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        CustomAdapter2 ingredientAdapter = new CustomAdapter2(getApplicationContext(), ingredients);
+        IngredientAdapter ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredients);
         title.setText(recipeTitle);
         ingredientsList.setAdapter(ingredientAdapter);
         if (methods.size() != 0) {
-            CustomAdapter2 customAdapter2 = new CustomAdapter2(getApplicationContext(), methods);
-            methodsList.setAdapter(customAdapter2);
+            MethodAdapter methodAdapter = new MethodAdapter(getApplicationContext(), methods);
+            methodsList.setAdapter(methodAdapter);
         }
     }
 }

@@ -32,7 +32,7 @@
         android:hint="@string/give_the_name_of_item"
         android:inputType="text"
         android:textColorHint="@color/black"
-        android:textSize="14sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
@@ -94,18 +94,18 @@
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="221dp"
         android:layout_height="48dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/give_the_amount_of_the_item"
         android:inputType="number"
         android:textColorHint="@color/black"
-        android:textSize="14sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.225" />
 
     <Button
         android:id="@+id/removeItemBtn"
