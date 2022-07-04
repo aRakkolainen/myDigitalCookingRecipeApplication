@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     String emailAddress;
     String username;
     String password;
+    String[] userInfo;
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,6 @@ public class SignUpActivity extends AppCompatActivity {
         // Defining our layout components:
 
         EditText givenEmailAddress = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        EditText givenUsername = (EditText) findViewById(R.id.editTextTextUsername);
         EditText givenPassword = (EditText) findViewById(R.id.editTextTextPassword);
         Button signUpBtn = (Button) findViewById(R.id.signUpButton);
         TextView signUpProgressText = (TextView) findViewById(R.id.signUpProgressTextView);
@@ -47,7 +47,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 emailAddress = givenEmailAddress.getText().toString();
-                username = givenUsername.getText().toString();
+                userInfo = emailAddress.split("@");
+                username = userInfo[0];
+                //username = givenUsername.getText().toString();
                 password = givenPassword.getText().toString();
                 if (password.length() < 4) {
                     signUpProgressText.setText("You need to give longer password!");

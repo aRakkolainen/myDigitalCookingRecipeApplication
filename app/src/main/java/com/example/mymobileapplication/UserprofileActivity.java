@@ -3,9 +3,11 @@ package com.example.mymobileapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,6 +37,9 @@ public class UserprofileActivity extends AppCompatActivity {
         TextView email = (TextView) findViewById(R.id.displayEmail);
         ImageView profilePicture = (ImageView) findViewById(R.id.imageViewProfilePicture);
         Spinner recipes = (Spinner) findViewById(R.id.recipesSpinner);
+        Spinner profilepictures = (Spinner) findViewById(R.id.profilePictureSpinner);
+        //ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>()
+        //profilepictures.setAdapter()
         if (getIntent().hasExtra("Username") && getIntent().hasExtra("Email")) {
             userName = getIntent().getExtras().getString("Username");
             emailAddress = getIntent().getExtras().getString("Email");

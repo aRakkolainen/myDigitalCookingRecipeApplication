@@ -147,6 +147,12 @@ public class GroceryListActivity extends AppCompatActivity {
                 ItemHashMapAdapter itemHashMapAdapter = new ItemHashMapAdapter(context, groceryItemHashMap);
                 myGroceryListView.setAdapter(itemHashMapAdapter);
                 ((BaseAdapter)myGroceryListView.getAdapter()).notifyDataSetChanged();
+                myGroceryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        System.out.println("Hello!");
+                    }
+                });
                 progressInfo.setText("The list updated successfully.");
                 progressInfo.setVisibility(View.VISIBLE);
                 new Handler().postDelayed(new Runnable() {

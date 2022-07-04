@@ -1,9 +1,11 @@
-/* Created by: Aino Räkköläinen Edited: 17.6.2022
+/* Created by: Aino Räkköläinen Edited: 4.7.2022
 * Sources:
 * Reading file in android studio is done with the help of this tutorial video:
 * https://www.youtube.com/watch?v=Ir9qeQqw-48
 * A string read from text file is edited with split command according to this website:
-* https://www.geeksforgeeks.org/split-string-java-examples/ */
+* https://www.geeksforgeeks.org/split-string-java-examples/
+* Operators in Java:
+* https://www.w3schools.com/java/java_operators.asp */
 
 package com.example.mymobileapplication;
 
@@ -30,13 +32,16 @@ import java.nio.charset.StandardCharsets;
 
 public class LoginActivity extends AppCompatActivity {
     Context context;
+    String username;
     String userName;
     String password;
     String email;
+    String logInInfo;
+    String wantedEmail;
     String wantedUsername;
     String wantedPassword;
     String filename;
-    byte[] array = new byte[100];
+    String[] user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,15 +49,21 @@ public class LoginActivity extends AppCompatActivity {
         context=this;
         Button logInBtn = (Button) findViewById(R.id.logInBtn);
         Button signUpBtn = (Button) findViewById(R.id.signUpBtn);
-        EditText askedUsername = (EditText) findViewById(R.id.editTextUsername);
+        EditText askedEmail = (EditText) findViewById(R.id.editTextUsername);
         EditText askedPassword = (EditText) findViewById(R.id.editTextPassword);
         TextView loginProgressInfo = (TextView) findViewById(R.id.logInProgressInfo);
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userName = askedUsername.getText().toString();
-                filename = userName + ".txt";
+                logInInfo = askedEmail.getText().toString();
+                if (logInInfo.contains("@")) {
+                    user = logInInfo.split("@");
+                    username = user[0];
+                } else {
+                    username = logInInfo;
+                }
+                filename = username + ".txt";
                 // Reading the file of the user who is trying to log in.
                 if(filename.toString() != null && filename.trim() !="") {
                     try {
@@ -64,8 +75,9 @@ public class LoginActivity extends AppCompatActivity {
                         while ( (line = br.readLine()) != null) {
                             // Splitting the information about the user with String array and split command:
                             String[] userInfo = line.split(";");
+                            wantedUsername = userInfo[0];
                             wantedPassword = userInfo[2];
-                            email = userInfo[1];
+                            wantedEmail = userInfo[1];
                         }
 
                     } catch (FileNotFoundException e) {
@@ -74,14 +86,20 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     password = askedPassword.getText().toString();
-                    if (password.equals(wantedPassword)) {
+                    if (password.equals(wantedPassword) && logInInfo.equals(wantedUsername)) {
                         loginProgressInfo.setText("Login succeeded!");
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.putExtra("username", userName);
-                        intent.putExtra("email address", email);
+                        intent.putExtra("username", username);
+                        intent.putExtra("email address", wantedEmail);
+                        startActivity(intent);
+                    } else if (password.equals(wantedPassword) && logInInfo.equals(wantedEmail)) {
+                        loginProgressInfo.setText("Login succeeded!");
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("username", username);
+                        intent.putExtra("email address", wantedEmail);
                         startActivity(intent);
                     } else {
-                        loginProgressInfo.setText("Wrong password!");
+                        loginProgressInfo.setText("Wrong password or username!");
                     }
                     loginProgressInfo.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(new Runnable() {

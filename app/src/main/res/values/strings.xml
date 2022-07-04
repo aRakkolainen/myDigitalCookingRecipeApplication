@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">My Mobile Application</string>
     <string name="search">Search</string>
-    <string-array name="items">
-        <item>banana</item>
+    <string-array name="profilepictures">
+        <item>breakfast</item>
         <item>toothpaste</item>
         <item>broccolies</item>
     </string-array>
