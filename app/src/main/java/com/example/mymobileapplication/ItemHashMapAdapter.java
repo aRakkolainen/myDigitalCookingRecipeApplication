@@ -19,6 +19,9 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +35,10 @@ public class ItemHashMapAdapter extends BaseAdapter {
     ArrayList myGroceries;
     HashMap<String, GroceryItem> groceryItemHashMap;
     Context context;
+    CharSequence text;
+    int currentValue;
+    int newValue;
+    int duration = Toast.LENGTH_SHORT;
 
     public ItemHashMapAdapter(Context c, HashMap<String, GroceryItem> g) {
         context = c;
@@ -66,7 +73,7 @@ public class ItemHashMapAdapter extends BaseAdapter {
         nameTextView.setText(item.getValue().getNumber() + item.getKey());
         if (item.getValue().getNumber() > 1) {
             nameTextView.setText(item.getValue().getNumber() + " " + item.getKey() + "s");
-        } else {
+        }else {
             nameTextView.setText(item.getValue().getNumber() + " " + item.getKey());
         }
 
@@ -81,8 +88,45 @@ public class ItemHashMapAdapter extends BaseAdapter {
                 }
             }
         });
-        if (checkBoxItem.isChecked() == true) {
-        }
+        FloatingActionButton increaseBtn = (FloatingActionButton) v.findViewById(R.id.increaseBtn);
+        FloatingActionButton decreaseBtn = (FloatingActionButton) v.findViewById(R.id.decreaseBtn);
+
+        increaseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentValue = item.getValue().getNumber();
+                item.getValue().setNumber(currentValue + 1);
+                if (currentValue > 1) {
+                    nameTextView.setText(item.getValue().getNumber() + " " + item.getKey() + "s");
+                } else {
+                    nameTextView.setText(item.getValue().getNumber() + " " + item.getKey());
+                }
+
+            }
+        });
+
+        decreaseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentValue = item.getValue().getNumber();
+                item.getValue().setNumber(currentValue - 1);
+                if (currentValue == 0) {
+                    text="You need to have at least 1 item!";
+                    Toast toast = Toast.makeText(context.getApplicationContext(), text, duration);
+                    toast.show();
+                    newValue = currentValue + 1;
+                    item.getValue().setNumber(newValue);
+                    nameTextView.setText(item.getValue().getNumber() + " " + item.getKey());
+                }
+                if (currentValue > 1) {
+                        nameTextView.setText(item.getValue().getNumber() + " " + item.getKey() + "s");
+                } else {
+                    nameTextView.setText(item.getValue().getNumber() + " " + item.getKey());
+                }
+
+
+            }
+        });
         return v;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.mymobileapplication;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ import java.util.ArrayList;
             try {
                 if (methods.get(i).isEmpty() != true) {
                     methodInfo.setText(i + 1 + ". " + methods.get(i));
+                    methodInfo.setTypeface(Typeface.SANS_SERIF);
                 }
             } catch (NullPointerException e) {
                 System.out.println("You didn't give a value");

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -32,6 +33,7 @@ import java.nio.charset.StandardCharsets;
 
 public class LoginActivity extends AppCompatActivity {
     Context context;
+    CharSequence text;
     String username;
     String userName;
     String password;
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     String wantedPassword;
     String filename;
     String[] user;
+    int duration = Toast.LENGTH_SHORT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         Button signUpBtn = (Button) findViewById(R.id.signUpBtn);
         EditText askedEmail = (EditText) findViewById(R.id.editTextUsername);
         EditText askedPassword = (EditText) findViewById(R.id.editTextPassword);
-        TextView loginProgressInfo = (TextView) findViewById(R.id.logInProgressInfo);
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,28 +89,21 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     password = askedPassword.getText().toString();
                     if (password.equals(wantedPassword) && logInInfo.equals(wantedUsername)) {
-                        loginProgressInfo.setText("Login succeeded!");
+                        text = "Login succeeded!";
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("username", username);
                         intent.putExtra("email address", wantedEmail);
                         startActivity(intent);
                     } else if (password.equals(wantedPassword) && logInInfo.equals(wantedEmail)) {
-                        loginProgressInfo.setText("Login succeeded!");
+                        text = "Login succeeded!";
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("username", username);
                         intent.putExtra("email address", wantedEmail);
                         startActivity(intent);
                     } else {
-                        loginProgressInfo.setText("Wrong password or username!");
+                        text = "Wrong password or username!";
                     }
-                    loginProgressInfo.setVisibility(View.VISIBLE);
-                    new Handler().postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            loginProgressInfo.setVisibility(View.GONE);
-                        }
-                    }, 3500);
+                    Toast.makeText(context, text, duration).show();
                 }
 
 
@@ -118,6 +113,8 @@ public class LoginActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                text = "Loading the sign up page...";
+                Toast.makeText(context.getApplicationContext(), text, duration);
                 Intent signUpIntent = new Intent(context, SignUpActivity.class);
                 startActivity(signUpIntent);
             }

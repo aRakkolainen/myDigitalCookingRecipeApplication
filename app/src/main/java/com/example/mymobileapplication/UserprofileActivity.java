@@ -2,9 +2,13 @@ package com.example.mymobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +32,9 @@ public class UserprofileActivity extends AppCompatActivity {
     private String filename;
     private String line;
     private String recipeTitle;
+    int pic;
+    private String[] profilepictures_array;
+    Context context;
     private ArrayList<String> recipeTitles = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,42 @@ public class UserprofileActivity extends AppCompatActivity {
         Spinner profilepictures = (Spinner) findViewById(R.id.profilePictureSpinner);
         //ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>()
         //profilepictures.setAdapter()
+        Resources res = getResources();
+        profilepictures_array = res.getStringArray(R.array.profilepictures);
+        context = getApplicationContext();
+        profilepictures.setAdapter(new ArrayAdapter<String>(this, R.layout.profile_pictures_list, profilepictures_array));
+
+        profilepictures.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Object item = adapterView.getItemAtPosition(i);
+                switch(item.toString()) {
+                    case("mandarin"):
+                        pic = R.drawable.profilepicture_mandarin;
+                        break;
+                    case("apple"):
+                        pic = R.drawable.profilepicture_apple;
+                        break;
+                    case("pineapple"):
+                        pic = R.drawable.profilepicture_pineapple;
+                        break;
+                    case("coffee"):
+                        pic = R.drawable.profilepicture_coffee;
+                        break;
+                    case("ice cream"):
+                        pic = R.drawable.profilepicture_icecream;
+                        break;
+                }
+                scaleImg(profilePicture, pic);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        //ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, profilepictures_array);
+        //profilepictures.setAdapter(profilepictureAdapter);
         if (getIntent().hasExtra("Username") && getIntent().hasExtra("Email")) {
             userName = getIntent().getExtras().getString("Username");
             emailAddress = getIntent().getExtras().getString("Email");
@@ -84,5 +127,20 @@ public class UserprofileActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void scaleImg(ImageView img, int pic) {
+        Display screen = getWindowManager().getDefaultDisplay();
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(getResources(), pic, options);
+        int imgWidth = options.outWidth;
+        int screenWidth = screen.getWidth();
+        if (imgWidth > screenWidth) {
+            int ratio = Math.round((float)imgWidth / (float)screenWidth);
+            options.inSampleSize = ratio;
+        }
+        options.inJustDecodeBounds = false;
+        Bitmap scaledImg = BitmapFactory.decodeResource(getResources(), pic, options);
+        img.setImageBitmap(scaledImg);
     }
 }

@@ -19,6 +19,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class ItemAdapter extends BaseAdapter {
@@ -71,8 +73,6 @@ public class ItemAdapter extends BaseAdapter {
                 }
             }
         });
-        if (checkBoxItem.isChecked() == true) {
-        }
         return v;
     }
 }

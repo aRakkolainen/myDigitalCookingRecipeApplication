@@ -2,15 +2,14 @@
     <string name="app_name">My Mobile Application</string>
     <string name="search">Search</string>
     <string-array name="profilepictures">
-        <item>breakfast</item>
-        <item>toothpaste</item>
-        <item>broccolies</item>
+        <item>Choose a profile picture</item>
+        <item>mandarin</item>
+        <item>apple</item>
+        <item>pineapple</item>
+        <item>coffee</item>
+        <item>ice cream</item>
     </string-array>
-    <string-array name="amounts">
-        <item>1</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -50,4 +49,7 @@
     <string name="title_activity_login2">LoginActivity2</string>
     <string name="email">Email:</string>
     <string name="username">Username:</string>
+    <string name="method">Method:</string>
+    <string name="the_title_of_the_recipe">The title of the recipe</string>
+    <string name="ingredients">Ingredients:</string>
 </resources>
