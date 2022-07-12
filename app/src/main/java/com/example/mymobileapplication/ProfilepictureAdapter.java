@@ -1,48 +1,45 @@
 package com.example.mymobileapplication;
 
 import android.content.Context;
-import android.util.SparseIntArray;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
-public class ProfilepictureAdapter extends BaseAdapter {
+public class ProfilepictureAdapter extends ArrayAdapter<String> {
     LayoutInflater mInFlater;
     Context context;
-    String[] profilePictures;
-    public ProfilepictureAdapter(Context c, String[] p) {
-        context = c;
-        profilePictures = p;
+    String[] names;
+    int[] images;
+    public ProfilepictureAdapter(Context context, String[] names, int[] images){
+        super(context, R.layout.profile_pictures_list, names);
+        this.context = context;
+        this.names = names;
+        this.images = images;
         mInFlater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-    @Override
-
-    public int getCount() {
-        return 0;
+   public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = inflater.inflate(R.layout.profile_pictures_list, null);
+            TextView text = (TextView) row.findViewById(R.id.textViewDescription);
+            ImageView img = (ImageView) row.findViewById(R.id.imageViewprofilepic);
+            text.setText(names[position]);
+            img.setImageResource(images[position]);
+            return row;
     }
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        View v = view;
-        if (v == null) {
-            v = mInFlater.inflate(R.layout.profile_pictures_list, null);
-        }
-        //ImageView profilePicture = (ImageView) v.findViewById(R.id.imageViewProfile);
-        //int id = (int) getItem(i);
-        //System.out.println(id);
-        //profilePicture.setImageResource(id);
-        return null;
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View row = inflater.inflate(R.layout.profile_pictures_list, null);
+        TextView text = (TextView) row.findViewById(R.id.textViewDescription);
+        ImageView img = (ImageView) row.findViewById(R.id.imageViewprofilepic);
+        text.setText(names[position]);
+        img.setImageResource(images[position]);
+        return row;
     }
 }

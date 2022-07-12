@@ -1,3 +1,9 @@
+/*Created by: Aino Räkköläinen Edited: 11.7.2022
+* Sources:
+*  How to make custom spinner with images and text:
+*  https://www.youtube.com/watch?v=wAOnzE2MjAM
+ */
+
 package com.example.mymobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +13,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
@@ -16,6 +23,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -33,7 +41,10 @@ public class UserprofileActivity extends AppCompatActivity {
     private String line;
     private String recipeTitle;
     int pic;
-    private String[] profilepictures_array;
+    int profilePic;
+    Spinner profilepictures;
+    private String[] profilepictures_img_array;
+    private String[] profilepictures_names;
     Context context;
     private ArrayList<String> recipeTitles = new ArrayList<>();
     @Override
@@ -44,53 +55,48 @@ public class UserprofileActivity extends AppCompatActivity {
         TextView email = (TextView) findViewById(R.id.displayEmail);
         ImageView profilePicture = (ImageView) findViewById(R.id.imageViewProfilePicture);
         Spinner recipes = (Spinner) findViewById(R.id.recipesSpinner);
-        Spinner profilepictures = (Spinner) findViewById(R.id.profilePictureSpinner);
+        profilepictures = (Spinner) findViewById(R.id.profilePictureSpinner);
         //ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>()
         //profilepictures.setAdapter()
-        Resources res = getResources();
-        profilepictures_array = res.getStringArray(R.array.profilepictures);
-        context = getApplicationContext();
-        profilepictures.setAdapter(new ArrayAdapter<String>(this, R.layout.profile_pictures_list, profilepictures_array));
+        //Resources res = getResources();
 
+        //profilepictures_names = res.getStringArray(R.array.profilepictures);
+        String[] names = {"Choose profile picture", "Option 1", "Option 2", "Option 3"};
+        int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.pineapple};
+        context = this;
+
+        if (getIntent().hasExtra("profilePic")) {
+            profilePic = getIntent().getExtras().getInt("profilePic");
+        }
+        profilePicture.setImageResource(profilePic);
+        ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
+        profilepictures.setAdapter(profilepictureAdapter);
         profilepictures.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Object item = adapterView.getItemAtPosition(i);
-                switch(item.toString()) {
-                    case("mandarin"):
-                        pic = R.drawable.profilepicture_mandarin;
-                        break;
-                    case("apple"):
-                        pic = R.drawable.profilepicture_apple;
-                        break;
-                    case("pineapple"):
-                        pic = R.drawable.profilepicture_pineapple;
-                        break;
-                    case("coffee"):
-                        pic = R.drawable.profilepicture_coffee;
-                        break;
-                    case("ice cream"):
-                        pic = R.drawable.profilepicture_icecream;
-                        break;
-                }
-                scaleImg(profilePicture, pic);
+                profilePicture.setImageResource(images[i]);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                profilePicture.setImageResource(profilePic);
             }
         });
-        //ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, profilepictures_array);
-        //profilepictures.setAdapter(profilepictureAdapter);
+
+
+
+
         if (getIntent().hasExtra("Username") && getIntent().hasExtra("Email")) {
             userName = getIntent().getExtras().getString("Username");
             emailAddress = getIntent().getExtras().getString("Email");
             username.setText(userName);
             email.setText(emailAddress);
         }
+
+        if (getIntent().hasExtra("profilePic")) {
+            profilePic = getIntent().getExtras().getInt("profilePic");
+        }
         filename = userName + "recipes.txt";
-        System.out.println(filename);
         FileInputStream fileInputStream = null;
         try {
             fileInputStream = openFileInput(filename);
@@ -143,4 +149,5 @@ public class UserprofileActivity extends AppCompatActivity {
         Bitmap scaledImg = BitmapFactory.decodeResource(getResources(), pic, options);
         img.setImageBitmap(scaledImg);
     }
+
 }

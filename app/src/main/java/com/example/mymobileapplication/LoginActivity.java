@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     String filename;
     String[] user;
     int duration = Toast.LENGTH_SHORT;
+    String profilePic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                             wantedUsername = userInfo[0];
                             wantedPassword = userInfo[2];
                             wantedEmail = userInfo[1];
+                            //profilePic = userInfo[3];
+
                         }
 
                     } catch (FileNotFoundException e) {
@@ -87,18 +90,21 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    System.out.println(wantedUsername + wantedPassword + wantedEmail + profilePic);
                     password = askedPassword.getText().toString();
                     if (password.equals(wantedPassword) && logInInfo.equals(wantedUsername)) {
                         text = "Login succeeded!";
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("username", username);
                         intent.putExtra("email address", wantedEmail);
+                        //intent.putExtra("profile pic", profilePic);
                         startActivity(intent);
                     } else if (password.equals(wantedPassword) && logInInfo.equals(wantedEmail)) {
                         text = "Login succeeded!";
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("username", username);
                         intent.putExtra("email address", wantedEmail);
+                        //intent.putExtra("profile pic", profilePic);
                         startActivity(intent);
                     } else {
                         text = "Wrong password or username!";

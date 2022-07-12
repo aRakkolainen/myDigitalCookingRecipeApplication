@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     LocalDateTime localDateTime;
     String text;
     int pic;
+    int profilePic;
     int hour;
 
     @Override
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         TextView welcomeText = (TextView) findViewById(R.id.welcomeTextView);
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         localDateTime = localDateTime.now();
+
         if (getIntent().hasExtra("username")) {
             username = getIntent().getExtras().getString("username");
             int hour = localDateTime.getHour();
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("email address")) {
             email = getIntent().getExtras().getString("email address");
         }
+        if (getIntent().hasExtra("profile pic")) {
+            profilePic = Integer.parseInt(getIntent().getExtras().getString("profile pic"));
+        }
         // Defining all buttons needed to navigate in this application and opening each activity:
 
         Button createNewRecipeBtn = (Button) findViewById(R.id.createNewRecipeBtn);
@@ -105,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent searchForRecipesIntent = new Intent(context, SearchRecipesActivity.class);
+                searchForRecipesIntent.putExtra("Username", username);
                 startActivity(searchForRecipesIntent);
             }
         });
@@ -114,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent openUserprofileIntent = new Intent(context, UserprofileActivity.class);
                 openUserprofileIntent.putExtra("Username", username);
                 openUserprofileIntent.putExtra("Email", email);
+                openUserprofileIntent.putExtra("ProfilePic", profilePic);
                 startActivity(openUserprofileIntent);
             }
         });

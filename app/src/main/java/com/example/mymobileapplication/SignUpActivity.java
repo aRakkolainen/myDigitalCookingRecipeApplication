@@ -12,8 +12,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.File;
@@ -31,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     String password;
     String[] userInfo;
     Context context;
+    String profilePic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,23 @@ public class SignUpActivity extends AppCompatActivity {
         EditText givenPassword = (EditText) findViewById(R.id.editTextTextPassword);
         Button signUpBtn = (Button) findViewById(R.id.signUpButton);
         TextView signUpProgressText = (TextView) findViewById(R.id.signUpProgressTextView);
-        context=this;
+        Spinner profilePicturePicker = (Spinner) findViewById(R.id.profilePicturePicker);
+        String[] names = {"Choose profile picture", "Option 1", "Option 2", "Option 3"};
+        int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.pineapple};
+        context = this;
+        ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
+        profilePicturePicker.setAdapter(profilepictureAdapter);
+        profilePicturePicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                profilePic = names[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         File path = context.getCacheDir();
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     Userprofile newUserprofile = new Userprofile(username, emailAddress, password);
                     String filename=username + ".txt";
-                    String userInfo = newUserprofile.getUsername() + ";" + newUserprofile.getEmail() + ";" + newUserprofile.getPassword();
+                    String userInfo = newUserprofile.getUsername() + ";" + newUserprofile.getEmail() + ";" + newUserprofile.getPassword() + ";" + profilePic;
                     try {
                         FileOutputStream fileOutputStream = openFileOutput(filename, Context.MODE_PRIVATE);
                         fileOutputStream.write(userInfo.getBytes(StandardCharsets.UTF_8));

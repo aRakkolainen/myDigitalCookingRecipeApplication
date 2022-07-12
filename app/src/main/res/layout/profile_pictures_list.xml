@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background" />
+    android:background="@color/background" >
+
+    <ImageView
+        android:id="@+id/imageViewprofilepic"
+        android:layout_width="182dp"
+        android:layout_height="131dp"
+        android:layout_weight="1"
+        android:maxWidth="30dp"
+        android:maxHeight="30dp"
+        android:src="@drawable/apple"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="319dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="Profile picture description"
+        android:textAlignment="viewStart" />
+</LinearLayout>

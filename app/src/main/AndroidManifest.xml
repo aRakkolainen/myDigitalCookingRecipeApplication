@@ -41,7 +41,7 @@
         <activity
             android:name=".SearchRecipesActivity"
             android:exported="false"
-            android:label="Search for recipes"
+            android:label="Search for a recipe"
             android:windowSoftInputMode="stateVisible|adjustNothing"/>
         <activity
             android:name=".GroceryListActivity"
