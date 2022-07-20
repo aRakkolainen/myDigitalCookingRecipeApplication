@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -37,19 +40,30 @@ public class AddRecipeActivity extends AppCompatActivity {
         Button saveChangesBtn = (Button) findViewById(R.id.saveChangesBtn);
         Button previewBtn = (Button) findViewById(R.id.previewBtn);
         Button saveRecipeBtn = (Button) findViewById(R.id.saveRecipeBtn);
+        Button clearBtn = (Button) findViewById(R.id.clearBtn);
         EditText addRecipeTitle = (EditText) findViewById(R.id.EditTextTitle);
         EditText addIngredientName = (EditText) findViewById(R.id.editTextIngredientName);
         EditText addIngredientAmount = (EditText) findViewById(R.id.editTextIngredientAmount);
         EditText addMethod = (EditText) findViewById(R.id.editTextMethod);
         TextView recipeTitleTextView = (TextView) findViewById(R.id.titleText);
+        TextView ingredientsTitle = (TextView) findViewById(R.id.ingredientsTitle);
+        TextView methodTitle = (TextView) findViewById(R.id.Method);
+        recipeTitleTextView.setVisibility(View.INVISIBLE);
         ListView ingredientsListView = (ListView) findViewById(R.id.ingredientListView);
         ListView methodsListView = (ListView) findViewById(R.id.methodsListView);
+        ingredientsListView.setVisibility(View.INVISIBLE);
+        methodsListView.setVisibility(View.INVISIBLE);
         context=this;
 
         if (getIntent().hasExtra("username")) {
             username = getIntent().getExtras().getString("username");
         }
-
+        ingredientsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(), "Do you want to remove this?", Toast.LENGTH_LONG).show();
+            }
+        });
         saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,23 +90,21 @@ public class AddRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CustomAdapter customAdapter = new CustomAdapter(context, ingredients);
-                recipeTitleTextView.setText(recipeTitle);
+                recipeTitleTextView.setVisibility(View.VISIBLE);
+                ingredientsTitle.setVisibility(View.VISIBLE);
+                methodTitle.setVisibility(View.VISIBLE);
+                ingredientsListView.setVisibility(View.VISIBLE);
+                if (recipeTitle.isEmpty()) {
+                    recipeTitleTextView.setText("Title comes here");
+                } else {
+                    recipeTitleTextView.setText(recipeTitle);
+                }
                 ingredientsListView.setAdapter(customAdapter);
                 if (methods.size() != 0) {
                     MethodAdapter methodAdapter = new MethodAdapter(context, methods);
+                    methodsListView.setVisibility(View.VISIBLE);
                     methodsListView.setAdapter(methodAdapter);
                 }
-                ingredientsListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        ingredients.remove(i);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
             }
         });
         saveRecipeBtn.setOnClickListener(new View.OnClickListener() {
@@ -144,14 +156,17 @@ public class AddRecipeActivity extends AppCompatActivity {
                 methods.clear();
             }
         });
-
-
-        /*saveBtn.setOnClickListener(new View.OnClickListener() {
+        clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Custom = new IngredientAdapter(context, ingredients);
-                ingredientsListView.setAdapter(ingredientAdapter);
+                ingredients.clear();
+                methods.clear();
+                recipeTitleTextView.setVisibility(View.INVISIBLE);
+                ingredientsListView.setVisibility(View.INVISIBLE);
+                methodsListView.setVisibility(View.INVISIBLE);
+                ingredientsTitle.setVisibility(View.INVISIBLE);
+                methodTitle.setVisibility(View.INVISIBLE);
             }
-        });*/
+        });
     }
 }

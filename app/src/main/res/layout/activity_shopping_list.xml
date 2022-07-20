@@ -152,7 +152,7 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_clear_24"
+        android:drawableLeft="@drawable/ic_baseline_clear_colored_24"
         android:drawablePadding="-10dp"
         android:gravity="start|center"
         android:focusable="false"
