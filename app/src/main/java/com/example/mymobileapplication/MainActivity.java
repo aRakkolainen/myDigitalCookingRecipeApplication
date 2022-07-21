@@ -1,5 +1,6 @@
 /* Basic information about this project:
-* Made by: Aino Räkköläinen, Edited last: 3.6.2022
+* Created by: Aino Räkköläinen, Edited last: 3.6.2022
+* This activity is mainly used for navigating between different parts of the app.
 * Sources for this code:
 * How to convert a string to an integer:
 * https://www.freecodecamp.org/news/java-string-to-int-how-to-convert-a-string-to-an-integer/

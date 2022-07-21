@@ -1,3 +1,8 @@
+/*Created by: Aino Räkköläinen 11.7.2022
+* Sources:
+* How to make custom spinner with images and text:
+* https://www.youtube.com/watch?v=wAOnzE2MjAM*/
+
 package com.example.mymobileapplication;
 
 import android.content.Context;

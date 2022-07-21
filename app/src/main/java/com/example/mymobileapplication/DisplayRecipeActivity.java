@@ -1,9 +1,10 @@
-/*Created by: Aino Räkköläinen Edited: 27.6.2022
+/*Created by: Aino Räkköläinen Edited: 21.7.2022
 * Functionality of this class/activity:
 * This activity displays the recipes the user have made in addRecipeActivity.
 * Sources:
 * How to remove the lines between listView items.
-* https://stackoverflow.com/questions/1914477/how-do-i-remove-lines-between-listviews-on-android */
+* https://stackoverflow.com/questions/1914477/how-do-i-remove-lines-between-listviews-on-android
+* */
 
 package com.example.mymobileapplication;
 
@@ -27,9 +28,9 @@ public class DisplayRecipeActivity extends AppCompatActivity {
     String line_method;
     String[] ingredientsArray;
     String[] methodArray;
-
     ArrayList<String> ingredients = new ArrayList<>();
     ArrayList<String> methods = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,22 +42,25 @@ public class DisplayRecipeActivity extends AppCompatActivity {
             recipeTitle = getIntent().getStringExtra("recipe title");
         }
         filename = recipeTitle + ".txt";
+        //Reading the selected recipe text file
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = openFileInput(filename);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader br = new BufferedReader(inputStreamReader);
-            recipeTitle = br.readLine();
-            line_ingredients = br.readLine();
-            line_method = br.readLine();
-            ingredientsArray = line_ingredients.split(";");
-            methodArray = line_method.split(";");
-            for (int i=0; i < ingredientsArray.length; i++) {
-                ingredients.add(ingredientsArray[i]);
-            }
+            if (filename != "null.txt") {
+                fileInputStream = openFileInput(filename);
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                BufferedReader br = new BufferedReader(inputStreamReader);
+                recipeTitle = br.readLine();
+                line_ingredients = br.readLine();
+                line_method = br.readLine();
+                ingredientsArray = line_ingredients.split(";");
+                methodArray = line_method.split(";");
+                for (int i=0; i < ingredientsArray.length; i++) {
+                    ingredients.add(ingredientsArray[i]);
+                }
 
-            for (int i=0; i < methodArray.length; i++) {
-                methods.add(methodArray[i]);
+                for (int i=0; i < methodArray.length; i++) {
+                    methods.add(methodArray[i]);
+                }
             }
 
         } catch (FileNotFoundException e) {
@@ -64,7 +68,7 @@ public class DisplayRecipeActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        // Setting the adapters for showing the information about the recipe
         IngredientAdapter ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredients);
         title.setText(recipeTitle);
         ingredientsList.setAdapter(ingredientAdapter);

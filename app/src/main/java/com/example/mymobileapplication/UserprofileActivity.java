@@ -2,6 +2,8 @@
 * Sources:
 *  How to make custom spinner with images and text:
 *  https://www.youtube.com/watch?v=wAOnzE2MjAM
+* How to read and write textfile in android is done with help of this tutorial:
+* https://www.youtube.com/watch?v=Ir9qeQqw-48
  */
 
 package com.example.mymobileapplication;
@@ -112,7 +114,9 @@ public class UserprofileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         for (int i=0; i < recipeTitles.size(); i++) {
-            System.out.println(recipeTitles.get(i));
+            if (recipeTitles.get(i).equals("null")) {
+                recipeTitles.remove(i);
+            }
         }
         CustomRecipeAdapter customRecipeAdapter = new CustomRecipeAdapter(getApplicationContext(), recipeTitles);
         recipes.setAdapter(customRecipeAdapter);

@@ -1,3 +1,9 @@
+/*Created by Aino Räkköläinen, Edited: 21.7.2022
+* This is based on the android studio tutorial video 3 and it is used
+* for displaying the recipes in displayRecipeActivity */
+
+
+
 package com.example.mymobileapplication;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -30,7 +36,7 @@ import java.util.ArrayList;
 
         @Override
         public long getItemId(int i) {
-            return 0;
+            return i;
         }
 
         @Override

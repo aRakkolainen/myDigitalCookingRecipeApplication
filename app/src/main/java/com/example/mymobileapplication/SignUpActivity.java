@@ -39,16 +39,16 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_in);
         // Defining our layout components:
-
         EditText givenEmailAddress = (EditText) findViewById(R.id.editTextTextEmailAddress);
         EditText givenPassword = (EditText) findViewById(R.id.editTextTextPassword);
         Button signUpBtn = (Button) findViewById(R.id.signUpButton);
         TextView signUpProgressText = (TextView) findViewById(R.id.signUpProgressTextView);
-        Spinner profilePicturePicker = (Spinner) findViewById(R.id.profilePicturePicker);
+        /*Spinner profilePicturePicker = (Spinner) findViewById(R.id.profilePicturePicker);
         String[] names = {"Choose profile picture", "Option 1", "Option 2", "Option 3"};
         int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.pineapple};
+        */
         context = this;
-        ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
+        /*ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
         profilePicturePicker.setAdapter(profilepictureAdapter);
         profilePicturePicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -60,8 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
-        File path = context.getCacheDir();
+        });*/
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

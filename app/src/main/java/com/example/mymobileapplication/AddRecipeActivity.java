@@ -1,3 +1,12 @@
+/* Created by: Aino Räkköläinen 10.6.2022 Last edited: 21.7.2022
+* This activity is for implementing add a recipe functionality in this application.
+* Sources for this activity have been mainly the android studio tutorials 2 and 3
+* from the course material
+* Sources for writing text file:
+* How to read and write textfile in android is done with help of this tutorial:
+* https://www.youtube.com/watch?v=Ir9qeQqw-48
+* */
+
 package com.example.mymobileapplication;
 
 import android.content.Context;
@@ -11,8 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -47,7 +54,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         EditText addMethod = (EditText) findViewById(R.id.editTextMethod);
         TextView recipeTitleTextView = (TextView) findViewById(R.id.titleText);
         TextView ingredientsTitle = (TextView) findViewById(R.id.ingredientsTitle);
-        TextView methodTitle = (TextView) findViewById(R.id.Method);
+        TextView methodTitle = (TextView) findViewById(R.id.StepsTitle);
         recipeTitleTextView.setVisibility(View.INVISIBLE);
         ListView ingredientsListView = (ListView) findViewById(R.id.ingredientListView);
         ListView methodsListView = (ListView) findViewById(R.id.methodsListView);
@@ -83,7 +90,6 @@ public class AddRecipeActivity extends AppCompatActivity {
                 } catch (NullPointerException e) {
                     System.out.println("No value!");
                 }
-                //ingredients.add(ingredient);
             }
         });
         previewBtn.setOnClickListener(new View.OnClickListener() {
@@ -101,9 +107,9 @@ public class AddRecipeActivity extends AppCompatActivity {
                 }
                 ingredientsListView.setAdapter(customAdapter);
                 if (methods.size() != 0) {
-                    MethodAdapter methodAdapter = new MethodAdapter(context, methods);
+                    StepAdapter stepAdapter = new StepAdapter(context, methods);
                     methodsListView.setVisibility(View.VISIBLE);
-                    methodsListView.setAdapter(methodAdapter);
+                    methodsListView.setAdapter(stepAdapter);
                 }
             }
         });

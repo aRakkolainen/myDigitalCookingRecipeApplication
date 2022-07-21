@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter {
@@ -41,7 +43,7 @@ public class CustomAdapter extends BaseAdapter {
             v = mInFlater.inflate(R.layout.my_detailed_list_ingredients_preview, null);
         }
         TextView ingredientInfo = (TextView) v.findViewById(R.id.ingredientsTextView);
-        Button removeInfoBtn = (Button) v.findViewById(R.id.removeInfoBtn);
+        FloatingActionButton removeInfoBtn = (FloatingActionButton) v.findViewById(R.id.removeInfoBtn);
         removeInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

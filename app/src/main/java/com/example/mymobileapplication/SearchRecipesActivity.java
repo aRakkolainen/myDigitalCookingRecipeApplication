@@ -1,4 +1,4 @@
-/* Created by: Aino Räkköläinen Last Edited: 12.7.2022
+/* Created by: Aino Räkköläinen Last Edited: 21.7.2022
 * Sources:
 * How to make the search view work with listview:
 * https://www.geeksforgeeks.org/android-searchview-with-example/
@@ -60,7 +60,9 @@ public class SearchRecipesActivity extends AppCompatActivity {
             }
         }
         for (int i=0; i < recipes.size(); i++) {
-            System.out.println(recipes.get(i));
+            if (recipes.get(i).equals("null")) {
+                recipes.remove(i);
+            }
         }
 
         //initialising the listView

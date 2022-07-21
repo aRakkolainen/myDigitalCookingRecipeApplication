@@ -59,4 +59,7 @@
     <string name="method">Method:</string>
     <string name="the_title_of_the_recipe">The title of the recipe</string>
     <string name="ingredients">Ingredients:</string>
+    <string name="steps">Steps</string>
+    <string name="give_amount_unit">Give amount + unit</string>
+    <string name="show_preview">Show preview</string>
 </resources>
