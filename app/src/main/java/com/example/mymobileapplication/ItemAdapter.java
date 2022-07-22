@@ -1,4 +1,4 @@
-// Created by: Aino Räkköläinen
+// Created by: Aino Räkköläinen Last edited: 22.7.2022
 // Sources for this code:
 // How to create a strikethrough text when checkBox is checked:
 // https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
@@ -27,22 +27,22 @@ public class ItemAdapter extends BaseAdapter {
     LayoutInflater mInFlater;
     //String[] items;
     //String[] amounts;
-    ArrayList<GroceryItem> groceryItemArrayList;
+    ArrayList<String> items;
     Context context;
 
-    public ItemAdapter(Context c, ArrayList<GroceryItem> g) {
+    public ItemAdapter(Context c, ArrayList<String> i) {
         context = c;
-        groceryItemArrayList = g;
+        items =i;
         mInFlater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return groceryItemArrayList.size();
+        return items.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return groceryItemArrayList.get(i);
+        return items.get(i);
     }
 
     @Override
@@ -54,22 +54,18 @@ public class ItemAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = view;
         if (v == null) {
-            v = mInFlater.inflate(R.layout.grocery_list_items, null);
+            v = mInFlater.inflate(R.layout.my_detailed_grocery_list, null);
         }
-        TextView nameTextView = (TextView) v.findViewById(R.id.itemNameTextView);
-        if (groceryItemArrayList.get(i).getNumber() > 1) {
-            nameTextView.setText(groceryItemArrayList.get(i).getNumber() + " " + groceryItemArrayList.get(i).getName() + "s");
-        } else {
-            nameTextView.setText(groceryItemArrayList.get(i).getNumber() + " " + groceryItemArrayList.get(i).getName());
-        }
-        CheckBox checkBoxItem = (CheckBox) v.findViewById(R.id.checkBox);
+        TextView itemTextView = (TextView) v.findViewById(R.id.itemTextView);
+        itemTextView.setText(items.get(i));
+        CheckBox checkBoxItem = (CheckBox) v.findViewById(R.id.itemCheckBox);
         checkBoxItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b == true) {
-                    nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    itemTextView.setPaintFlags(itemTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 } else {
-                    nameTextView.setPaintFlags(nameTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                    itemTextView.setPaintFlags(itemTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
                 }
             }
         });

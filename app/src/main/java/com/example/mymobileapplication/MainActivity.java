@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent openGroceryListIntent = new Intent(context, GroceryListActivity.class);
+                openGroceryListIntent.putExtra("Username", username);
                 startActivity(openGroceryListIntent);
             }
         });

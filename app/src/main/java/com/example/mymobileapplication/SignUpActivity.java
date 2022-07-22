@@ -1,4 +1,7 @@
-/* Created by: Aino Räkköläinen Edited last: 22.6.2022
+/* Created by: Aino Räkköläinen Edited last: 22.7.2022
+* Purpose: This is for the new users to sign up in the application. In this activity,
+* the user is asked to fill in email address and password and those are written to the text file.
+* The user is given username based on the email address.
 * Sources:
 * How to read and write textfile in android is done with help of this tutorial:
 * https://www.youtube.com/watch?v=Ir9qeQqw-48
@@ -17,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,10 +49,9 @@ public class SignUpActivity extends AppCompatActivity {
         TextView signUpProgressText = (TextView) findViewById(R.id.signUpProgressTextView);
         /*Spinner profilePicturePicker = (Spinner) findViewById(R.id.profilePicturePicker);
         String[] names = {"Choose profile picture", "Option 1", "Option 2", "Option 3"};
-        int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.pineapple};
-        */
+        int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.apple};
         context = this;
-        /*ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
+        ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
         profilePicturePicker.setAdapter(profilepictureAdapter);
         profilePicturePicker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -78,7 +81,8 @@ public class SignUpActivity extends AppCompatActivity {
                     try {
                         FileOutputStream fileOutputStream = openFileOutput(filename, Context.MODE_PRIVATE);
                         fileOutputStream.write(userInfo.getBytes(StandardCharsets.UTF_8));
-                        signUpProgressText.setText("Sign up done successfully!");
+                        Toast.makeText(context, "Sign up done successfully!", Toast.LENGTH_LONG).show();
+                        //signUpProgressText.setText("Sign up done successfully!");
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

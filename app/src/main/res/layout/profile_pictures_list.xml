@@ -4,25 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background" >
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/imageViewprofilepic"
-        android:layout_width="182dp"
-        android:layout_height="131dp"
-        android:layout_weight="1"
+        android:layout_width="101dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
         android:maxWidth="30dp"
         android:maxHeight="30dp"
-        android:src="@drawable/apple"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/apple" />
 
     <TextView
         android:id="@+id/textViewDescription"
-        android:layout_width="319dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:text="Profile picture description"
-        android:textAlignment="viewStart" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="219dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
 </LinearLayout>

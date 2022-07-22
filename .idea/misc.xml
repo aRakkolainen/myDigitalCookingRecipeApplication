@@ -24,6 +24,7 @@
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.175390625" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15334699453551912" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_add_recipe.xml" value="0.22" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_display_grocery_list.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_display_recipe.xml" value="0.1" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/activity_login2.xml" value="0.24365942028985507" />
@@ -38,12 +39,14 @@
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/grocery_list_items.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/list_item.xml" value="0.22" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/method_list.xml" value="0.2563405797101449" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_grocery_list.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list_ingredients.xml" value="0.22" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list_ingredients_preview.xml" value="0.22" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list_methods.xml" value="0.1" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/my_detailed_list_steps_preview.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/profile_pictures_list.xml" value="0.1" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/profile_pictures.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/profile_pictures_list.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/recipe_item.xml" value="0.1" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/layout/settings_activity.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/arakkolainen/AndroidStudioProjects/MyMobileApplication/app/src/main/res/menu/menu.xml" value="0.17552083333333332" />

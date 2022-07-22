@@ -4,7 +4,11 @@
 * Sources:
 * How to remove the lines between listView items.
 * https://stackoverflow.com/questions/1914477/how-do-i-remove-lines-between-listviews-on-android
-* */
+* Reading file in android studio is done with the help of this tutorial video:
+ * https://www.youtube.com/watch?v=Ir9qeQqw-48
+ * A string read from text file is edited with split command according to this website:
+ * https://www.geeksforgeeks.org/split-string-java-examples/
+ * Operators in Java:*/
 
 package com.example.mymobileapplication;
 

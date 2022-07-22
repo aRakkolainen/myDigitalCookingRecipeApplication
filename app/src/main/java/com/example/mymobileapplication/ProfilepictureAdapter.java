@@ -30,9 +30,9 @@ public class ProfilepictureAdapter extends ArrayAdapter<String> {
     }
    public View getDropDownView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.profile_pictures_list, null);
-            TextView text = (TextView) row.findViewById(R.id.textViewDescription);
-            ImageView img = (ImageView) row.findViewById(R.id.imageViewprofilepic);
+            View row = inflater.inflate(R.layout.profile_pictures, null);
+            TextView text = (TextView) row.findViewById(R.id.textViewDesc);
+            ImageView img = (ImageView) row.findViewById(R.id.imageViewProfile);
             text.setText(names[position]);
             img.setImageResource(images[position]);
             return row;
@@ -40,9 +40,9 @@ public class ProfilepictureAdapter extends ArrayAdapter<String> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.profile_pictures_list, null);
-        TextView text = (TextView) row.findViewById(R.id.textViewDescription);
-        ImageView img = (ImageView) row.findViewById(R.id.imageViewprofilepic);
+        View row = inflater.inflate(R.layout.profile_pictures, null);
+        TextView text = (TextView) row.findViewById(R.id.textViewDesc);
+        ImageView img = (ImageView) row.findViewById(R.id.imageViewProfile);
         text.setText(names[position]);
         img.setImageResource(images[position]);
         return row;

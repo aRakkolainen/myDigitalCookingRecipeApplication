@@ -10,14 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMobileApplication">
         <activity
+            android:name=".DisplayGroceryListActivity"
+            android:exported="false" />
+        <activity
             android:name=".DisplayRecipeActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateVisible|adjustNothing"/>
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false"
             android:label="Sign up"
-            android:windowSoftInputMode="stateVisible|adjustNothing"/>
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -42,7 +45,7 @@
             android:name=".SearchRecipesActivity"
             android:exported="false"
             android:label="Search for a recipe"
-            android:windowSoftInputMode="stateVisible|adjustNothing"/>
+            android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".GroceryListActivity"
             android:exported="false"

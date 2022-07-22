@@ -62,4 +62,6 @@
     <string name="steps">Steps</string>
     <string name="give_amount_unit">Give amount + unit</string>
     <string name="show_preview">Show preview</string>
+    <string name="profilepicture">Profilepicture</string>
+    <string name="username">Username:</string>
 </resources>

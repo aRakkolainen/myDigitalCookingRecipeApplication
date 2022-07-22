@@ -39,16 +39,15 @@ import java.util.ArrayList;
 public class UserprofileActivity extends AppCompatActivity {
     private String userName;
     private String emailAddress;
-    private String filename;
+    private String filenameRecipes;
+    private String filenameGroceryLists;
     private String line;
     private String recipeTitle;
-    int pic;
     int profilePic;
     Spinner profilepictures;
-    private String[] profilepictures_img_array;
-    private String[] profilepictures_names;
     Context context;
     private ArrayList<String> recipeTitles = new ArrayList<>();
+    private ArrayList<String> groceryListTitles = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,37 +56,36 @@ public class UserprofileActivity extends AppCompatActivity {
         TextView email = (TextView) findViewById(R.id.displayEmail);
         ImageView profilePicture = (ImageView) findViewById(R.id.imageViewProfilePicture);
         Spinner recipes = (Spinner) findViewById(R.id.recipesSpinner);
+        Spinner groceryLists = (Spinner) findViewById(R.id.groceryListSpinner);
         profilepictures = (Spinner) findViewById(R.id.profilePictureSpinner);
         //ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>()
         //profilepictures.setAdapter()
         //Resources res = getResources();
 
-        //profilepictures_names = res.getStringArray(R.array.profilepictures);
         String[] names = {"Choose profile picture", "Option 1", "Option 2", "Option 3"};
-        int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.pineapple};
+        int[] images = {0 , R.drawable.mandarin, R.drawable.icecream, R.drawable.apple};
         context = this;
 
-        if (getIntent().hasExtra("profilePic")) {
+        /*if (getIntent().hasExtra("profilePic")) {
             profilePic = getIntent().getExtras().getInt("profilePic");
-        }
-        profilePicture.setImageResource(profilePic);
+        }*/
+        //profilePicture.setImageResource(profilePic);
         ProfilepictureAdapter profilepictureAdapter = new ProfilepictureAdapter(context, names, images);
         profilepictures.setAdapter(profilepictureAdapter);
         profilepictures.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                profilePicture.setImageResource(images[i]);
+                scaleImg(profilePicture, images[i]);
+                //profilePicture.setImageResource(images[i]);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                profilePicture.setImageResource(profilePic);
+                //profilePicture.setImageResource(profilePic);
             }
         });
 
-
-
-
+        // Testing if the username and email is received correctly from main activity
         if (getIntent().hasExtra("Username") && getIntent().hasExtra("Email")) {
             userName = getIntent().getExtras().getString("Username");
             emailAddress = getIntent().getExtras().getString("Email");
@@ -95,29 +93,35 @@ public class UserprofileActivity extends AppCompatActivity {
             email.setText(emailAddress);
         }
 
-        if (getIntent().hasExtra("profilePic")) {
+        /*if (getIntent().hasExtra("profilePic")) {
             profilePic = getIntent().getExtras().getInt("profilePic");
-        }
-        filename = userName + "recipes.txt";
+        }*/
+
+        // Reading the titles of the recipes the user has created from the text file
+        filenameRecipes = userName + "recipes.txt";
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = openFileInput(filename);
+            fileInputStream = openFileInput(filenameRecipes);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader br = new BufferedReader(inputStreamReader);
             recipeTitles.add("Your recipes");
             while ( (line = br.readLine()) != null) {
                 recipeTitles.add(line);
             }
+            fileInputStream.close();
+            br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Deleting accident empty recipe
         for (int i=0; i < recipeTitles.size(); i++) {
             if (recipeTitles.get(i).equals("null")) {
                 recipeTitles.remove(i);
             }
         }
+        // Setting up the custom recipe adapter for showing the recipeTitles list in Spinner
         CustomRecipeAdapter customRecipeAdapter = new CustomRecipeAdapter(getApplicationContext(), recipeTitles);
         recipes.setAdapter(customRecipeAdapter);
         recipes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -137,7 +141,48 @@ public class UserprofileActivity extends AppCompatActivity {
 
             }
         });
+
+        // Here we could also show with similar spinner thing the list of grocery list
+        // the user has created and there the user could open the specific grocery list.
+        filenameGroceryLists = userName + "groceryLists.txt";
+        FileInputStream fileIStream = null;
+        try {
+            fileIStream= openFileInput(filenameGroceryLists);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileIStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            groceryListTitles.add("Your grocery lists");
+            while ( (line = bufferedReader.readLine()) != null) {
+                groceryListTitles.add(line);
+            }
+            fileIStream.close();
+            bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CustomGroceryListAdapter customGroceryListAdapter = new CustomGroceryListAdapter(context, groceryListTitles);
+        groceryLists.setAdapter(customGroceryListAdapter);
+        groceryLists.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Object item = adapterView.getItemAtPosition(i);
+                String groceryListTitle = item.toString();
+                if ( item != null && groceryListTitle != "Your grocery lists") {
+                    Intent displayGroceryListIntent = new Intent(getApplicationContext(), DisplayGroceryListActivity.class);
+                    displayGroceryListIntent.putExtra("The title of the list", groceryListTitle);
+                    startActivity(displayGroceryListIntent);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
+
     private void scaleImg(ImageView img, int pic) {
         Display screen = getWindowManager().getDefaultDisplay();
         BitmapFactory.Options options = new BitmapFactory.Options();
