@@ -1,4 +1,4 @@
-/* Created by: Aino Räkköläinen Edited: 4.7.2022
+/* Created by: Aino Räkköläinen Edited: 25.7.2022
 * Purpose: This is used for implementing basic login system in this app.
 * Sources:
 * Reading file in android studio is done with the help of this tutorial video:
@@ -6,7 +6,8 @@
 * A string read from text file is edited with split command according to this website:
 * https://www.geeksforgeeks.org/split-string-java-examples/
 * Operators in Java:
-* https://www.w3schools.com/java/java_operators.asp */
+* https://www.w3schools.com/java/java_operators.asp
+* * https://www.codegrepper.com/code-examples/whatever/how+to+check+if+file+exists+in+android+studio*/
 
 package com.example.mymobileapplication;
 
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -66,8 +68,55 @@ public class LoginActivity extends AppCompatActivity {
                     username = logInInfo;
                 }
                 filename = username + ".txt";
+                File dir = getFilesDir();
+                File file = new File(dir, filename);
+                if(file.exists()) {
+                    if (filename.toString() != null && filename.trim() != "") {
+                        try {
+                            FileInputStream fileInputStream = openFileInput(filename);
+                            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                            BufferedReader br = new BufferedReader(inputStreamReader);
+                            //StringBuilder stringBuilder = new StringBuilder();
+                            String line;
+                            while ((line = br.readLine()) != null) {
+                                // Splitting the information about the user with String array and split command:
+                                String[] userInfo = line.split(";");
+                                wantedUsername = userInfo[0];
+                                wantedPassword = userInfo[2];
+                                wantedEmail = userInfo[1];
+                                //profilePic = userInfo[3];
+
+                            }
+
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    password = askedPassword.getText().toString();
+                    if (password.equals(wantedPassword) && logInInfo.equals(wantedUsername)) {
+                        text = "Login succeeded!";
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("username", username);
+                        intent.putExtra("email address", wantedEmail);
+                        startActivity(intent);
+                    } else if (password.equals(wantedPassword) && logInInfo.equals(wantedEmail)) {
+                        text = "Login succeeded!";
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("username", username);
+                        intent.putExtra("email address", wantedEmail);
+                        //intent.putExtra("profile pic", profilePic);
+                        startActivity(intent);
+                    } else {
+                        text = "Wrong password or username!";
+                    }
+                    Toast.makeText(context, text, duration).show();
+                } else {
+                    Toast.makeText(context, "This user doesn't exist!", Toast.LENGTH_LONG).show();
+                }
                 // Reading the file of the user who is trying to log in.
-                if(filename.toString() != null && filename.trim() !="") {
+                /*if(filename.toString() != null && filename.trim() !="") {
                     try {
                         FileInputStream fileInputStream = openFileInput(filename);
                         InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
@@ -86,17 +135,16 @@ public class LoginActivity extends AppCompatActivity {
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
+                        Toast.makeText(context, "This user doesn't exist!", Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println(wantedUsername + wantedPassword + wantedEmail + profilePic);
                     password = askedPassword.getText().toString();
                     if (password.equals(wantedPassword) && logInInfo.equals(wantedUsername)) {
                         text = "Login succeeded!";
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("username", username);
                         intent.putExtra("email address", wantedEmail);
-                        //intent.putExtra("profile pic", profilePic);
                         startActivity(intent);
                     } else if (password.equals(wantedPassword) && logInInfo.equals(wantedEmail)) {
                         text = "Login succeeded!";
@@ -109,9 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                         text = "Wrong password or username!";
                     }
                     Toast.makeText(context, text, duration).show();
-                }
-
-
+                }*/
             }
         });
 
