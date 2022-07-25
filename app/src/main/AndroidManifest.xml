@@ -25,7 +25,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="Log in"
+            android:label="Log in "
             android:windowSoftInputMode="stateVisible|adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
