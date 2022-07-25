@@ -15,7 +15,7 @@
         <activity
             android:name=".DisplayRecipeActivity"
             android:exported="false"
-            android:label="Display the recipe"
+            android:label="Display the recipe "
             android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".SignUpActivity"
