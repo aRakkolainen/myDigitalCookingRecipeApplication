@@ -4,7 +4,9 @@
 * listView according to the Android Studio tutorial video part 3.
 * Sources:
 * Android Studio for Beginners part 3 tutorial video:
-* https://www.youtube.com/watch?v=rdGpT1pIJlw */
+* https://www.youtube.com/watch?v=rdGpT1pIJlw
+* Fixing a bug:
+* https://stackoverflow.com/questions/28601476/java-lang-nullpointerexception-attempt-to-invoke-virtual-method-int-android-vi*/
 package com.example.mymobileapplication;
 
 import android.content.Context;
