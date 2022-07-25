@@ -11,6 +11,9 @@
 * https://developer.android.com/guide/topics/ui/notifiers/toasts
 * How to go through the content of the hashMap:
 * https://stackoverflow.com/questions/8909810/how-to-print-all-key-and-values-from-hashmap-in-android
+* Making a custom listView:
+* Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw
 */
 package com.example.mymobileapplication;
 
@@ -28,16 +31,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mymobileapplication.GroceryItem;
-import com.example.mymobileapplication.GroceryList;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class GroceryListActivity extends AppCompatActivity {
     String groceryListName;
@@ -61,7 +60,7 @@ public class GroceryListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopping_list);
+        setContentView(R.layout.activity_grocery_list);
         myGroceryListView = (ListView) findViewById(R.id.groceriesList);
         // Defining our buttons and editText-views:
         EditText listName = (EditText) findViewById(R.id.editTextListName);
@@ -73,16 +72,11 @@ public class GroceryListActivity extends AppCompatActivity {
         Button addItemBtn = (Button) findViewById(R.id.addItemBtn);
         EditText amountOfItems = (EditText) findViewById(R.id.editTextAmountOfItems);
         TextView groceryListNameText = (TextView) findViewById(R.id.groceryListTextView);
-        // Removing an item from list components
-        //EditText itemToRemove = (EditText) findViewById(R.id.itemToRemove);
+        // Removing an item from list button
         Button removeItemBtn = (Button) findViewById(R.id.removeItemBtn);
-        //Updating the list -components:
+        //Updating the list button:
         Button updateListBtn = (Button) findViewById(R.id.updateTheListBtn);
-        // Setting onClickListeners for both buttons:
         // This button is used to save the name for the list
-        if (getIntent().hasExtra("Username")) {
-            username = getIntent().getExtras().getString("Username");
-        }
         saveBtn.setOnClickListener(view -> {
             groceryListName = listName.getText().toString();
             groceryListNameText.setText(groceryListName);
@@ -90,7 +84,12 @@ public class GroceryListActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), progress, duration);
             toast.show();
         });
-
+        //Getting the username sent from main activity
+        if (getIntent().hasExtra("Username")) {
+            username = getIntent().getExtras().getString("Username");
+        }
+        // Setting onClickListeners for all buttons in the view
+        //This button is for saving the list to the text file.
         saveTheListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +128,6 @@ public class GroceryListActivity extends AppCompatActivity {
 
             }
         });
-
         addItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,7 +151,6 @@ public class GroceryListActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), progress, duration);
                 toast.show();
             }
-
         });
         removeItemBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +190,6 @@ public class GroceryListActivity extends AppCompatActivity {
 
             }
         });
-
         clearAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

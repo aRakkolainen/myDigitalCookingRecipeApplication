@@ -1,3 +1,11 @@
+/* Created by: Aino Räkköläinen 22.7.2022
+* Purpose:
+* for displaying the steps/methods which are those instructions
+* in recipe how to cook something in add a recipe Activity,
+* displaying the preview of those.
+* Sources:
+*  Making a custom listView with help of Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw */
 package com.example.mymobileapplication;
 
 import android.content.Context;

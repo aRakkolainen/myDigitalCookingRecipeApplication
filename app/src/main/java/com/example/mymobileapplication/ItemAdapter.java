@@ -1,8 +1,11 @@
-// Created by: Aino Räkköläinen Last edited: 22.7.2022
-// Sources for this code:
-// How to create a strikethrough text when checkBox is checked:
-// https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
-
+/* Created by: Aino Räkköläinen Last edited: 22.7.2022
+* Purpose: Adapter for custom listView to use for displaying the grocery lists
+* Sources for this code:
+* How to create a strikethrough text when checkBox is checked:
+* https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
+* Making a custom listView with help of Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw
+*/
 
 package com.example.mymobileapplication;
 

@@ -1,3 +1,9 @@
+/* Created by: Aino Räkköläinen
+* Purpose: This is used for making a custom listView to show the
+* ingredients of the recipe both in the add a new recipe activity and displaying the recipe activity
+* Sources:
+* Making a custom listView with help of Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw */
 package com.example.mymobileapplication;
 
 import android.content.Context;

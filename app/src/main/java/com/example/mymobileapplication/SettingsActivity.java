@@ -1,6 +1,6 @@
 /*Created by: Aino Räkköläinen 10.6.2022
 * Purpose: This is going to be used for settings in this activity,
-* however, there is now none of those yet */
+* however, there is none of those yet because of the lack of the time */
 package com.example.mymobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;

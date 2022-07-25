@@ -1,3 +1,5 @@
+/* Created by: Aino Räkköläinen Last edited: 25.7.2022 (Just adding this comment)
+* Purpose: Class for making ingredient objects to recipes */
 package com.example.mymobileapplication;
 
 public class Ingredient {

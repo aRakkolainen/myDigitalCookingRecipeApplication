@@ -1,4 +1,7 @@
-/*Created by: Aino Räkköläinen 22.7.2022*/
+/* Created by: Aino Räkköläinen 22.7.2022
+* Purpose: This class is for making grocerylist objects,
+* even though the grocery items are actually saved in hashMap.
+* This has attributes title and items */
 package com.example.mymobileapplication;
 
 import com.example.mymobileapplication.GroceryItem;

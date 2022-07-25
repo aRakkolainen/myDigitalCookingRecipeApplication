@@ -2,9 +2,15 @@
 * This activity is for implementing add a recipe functionality in this application.
 * Sources for this activity have been mainly the android studio tutorials 2 and 3
 * from the course material
-* Sources for writing text file:
+* Sources:
+* Android Studio for beginners tutorials:
+* Part 2:
+* https://www.youtube.com/watch?v=6ow3L39Wxmg
+* Part 3:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw
 * How to read and write textfile in android is done with help of this tutorial:
 * https://www.youtube.com/watch?v=Ir9qeQqw-48
+*
 * */
 
 package com.example.mymobileapplication;

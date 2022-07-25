@@ -1,3 +1,10 @@
+/*Created by: Aino Räkköläinen Last edited: 22.7.2022
+* Purpose: This is a custom adapter made for showing listview
+* for ingredients when adding a new recipe. This is needed to make custom
+ * listView according to the Android Studio tutorial video part 3.
+* Sources:
+* Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw */
 package com.example.mymobileapplication;
 
 import android.content.Context;
@@ -5,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

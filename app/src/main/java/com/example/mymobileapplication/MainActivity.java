@@ -10,6 +10,8 @@
 * https://developer.android.com/reference/java/time/LocalDateTime
 * How to add the icon to text buttons:
 * https://www.youtube.com/watch?v=cOeK32o8eB4
+* How to open new activities:
+* https://www.youtube.com/watch?v=6ow3L39Wxmg
 */
 package com.example.mymobileapplication;
 

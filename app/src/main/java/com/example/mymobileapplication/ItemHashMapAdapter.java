@@ -1,10 +1,12 @@
-// Created by: Aino Räkköläinen
-// Sources for this code:
-// How to create a strikethrough text when checkBox is checked:
-// https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
-// How to display HashMap in ListView:
-// https://stackoverflow.com/questions/19466757/hashmap-to-listview
-
+/* Created by: Aino Räkköläinen Last Edited: 25.7.2022 (This comment edited)
+* Sources for this code:
+* How to create a strikethrough text when checkBox is checked:
+* https://stackoverflow.com/questions/9786544/creating-a-strikethrough-text
+* How to display HashMap in ListView:
+* https://stackoverflow.com/questions/19466757/hashmap-to-listview
+* Making a custom listView with help of Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw
+*/
 package com.example.mymobileapplication;
 
 import static java.lang.Integer.parseInt;
@@ -29,9 +31,6 @@ import java.util.Map;
 
 public class ItemHashMapAdapter extends BaseAdapter {
     LayoutInflater mInFlater;
-    //String[] items;
-    //String[] amounts;
-    //ArrayList<GroceryItem> groceryItemArrayList;
     ArrayList myGroceries;
     HashMap<String, GroceryItem> groceryItemHashMap;
     Context context;

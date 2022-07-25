@@ -1,4 +1,5 @@
 /* Created by: Aino Räkköläinen Last Edited: 21.7.2022
+* Purpose: This is for searching specific recipe from all recipes the user has created.
 * Sources:
 * How to make the search view work with listview:
 * https://www.geeksforgeeks.org/android-searchview-with-example/
@@ -81,7 +82,7 @@ public class SearchRecipesActivity extends AppCompatActivity {
             }
         });
             //Setting the adapter
-            adapter =new ArrayAdapter<>(this,R.layout.recipe_item,recipes);
+            adapter = new ArrayAdapter<>(this,R.layout.recipe_item,recipes);
         searchResults.setAdapter(adapter);
     }
     // This next part is done same way as in this tutorial in GeeksForGeeks website

@@ -1,3 +1,8 @@
+/* Created by: Aino Räkköläinen Last edited: 25.7.2022
+* Purpose: This is a custom adapter for showing the recipes.
+* Sources:
+* Android Studio for Beginners part 3 tutorial video:
+ * https://www.youtube.com/watch?v=rdGpT1pIJlw */
 package com.example.mymobileapplication;
 
 import android.content.Context;

@@ -1,4 +1,10 @@
-/* Created by: Aino Räkköläinen 22.7.2022*/
+/* Created by: Aino Räkköläinen 22.7.2022
+* Purpose: Custom adapter for showing the titles of the grocery lists
+* the user has added in their profile. This is needed to make custom
+* listView according to the Android Studio tutorial video part 3.
+* Sources:
+* Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw */
 package com.example.mymobileapplication;
 
 import android.content.Context;

@@ -1,8 +1,10 @@
 /*Created by Aino Räkköläinen, Edited: 21.7.2022
 * This is based on the android studio tutorial video 3 and it is used
-* for displaying the recipes in displayRecipeActivity */
-
-
+* for displaying the steps/methods which are those instructions
+* in recipe how to cook something in displayRecipeActivity
+* Sources:
+*  Making a custom listView with help of Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw */
 
 package com.example.mymobileapplication;
 import android.content.Context;
@@ -43,9 +45,9 @@ import java.util.ArrayList;
         public View getView(int i, View view, ViewGroup viewGroup) {
             View v = view;
             if (v == null) {
-                v = mInFlater.inflate(R.layout.my_detailed_list_methods, null);
+                v = mInFlater.inflate(R.layout.my_detailed_list_steps, null);
             }
-            TextView methodInfo = (TextView) v.findViewById(R.id.methodTextView);
+            TextView methodInfo = (TextView) v.findViewById(R.id.TextViewSteps);
             try {
                 if (methods.get(i).isEmpty() != true) {
                     methodInfo.setText(i + 1 + ". " + methods.get(i));

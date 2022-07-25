@@ -1,10 +1,13 @@
-/*Created by: Aino Räkköläinen Edited: 11.7.2022
+/* Created by: Aino Räkköläinen Edited: 25.7.2022
 * Sources:
 *  How to make custom spinner with images and text:
 *  https://www.youtube.com/watch?v=wAOnzE2MjAM
 * How to read and write textfile in android is done with help of this tutorial:
 * https://www.youtube.com/watch?v=Ir9qeQqw-48
- */
+*  Making a custom listView:
+* Android Studio for Beginners part 3 tutorial video:
+* https://www.youtube.com/watch?v=rdGpT1pIJlw
+*/
 
 package com.example.mymobileapplication;
 
@@ -92,10 +95,6 @@ public class UserprofileActivity extends AppCompatActivity {
             username.setText(userName);
             email.setText(emailAddress);
         }
-
-        /*if (getIntent().hasExtra("profilePic")) {
-            profilePic = getIntent().getExtras().getInt("profilePic");
-        }*/
 
         // Reading the titles of the recipes the user has created from the text file
         filenameRecipes = userName + "recipes.txt";

@@ -15,6 +15,7 @@
         <activity
             android:name=".DisplayRecipeActivity"
             android:exported="false"
+            android:label="Display the recipe"
             android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".SignUpActivity"
@@ -49,7 +50,7 @@
         <activity
             android:name=".GroceryListActivity"
             android:exported="false"
-            android:label="GroceryLists"
+            android:label="Add a new grocery list"
             android:windowSoftInputMode="stateVisible|adjustNothing" />
         <activity
             android:name=".AddRecipeActivity"

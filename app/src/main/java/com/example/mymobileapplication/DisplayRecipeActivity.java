@@ -1,5 +1,5 @@
 /*Created by: Aino Räkköläinen Edited: 21.7.2022
-* Functionality of this class/activity:
+* Purpose:
 * This activity displays the recipes the user have made in addRecipeActivity.
 * Sources:
 * How to remove the lines between listView items.
@@ -8,7 +8,8 @@
  * https://www.youtube.com/watch?v=Ir9qeQqw-48
  * A string read from text file is edited with split command according to this website:
  * https://www.geeksforgeeks.org/split-string-java-examples/
- * Operators in Java:*/
+ * Making a custom listView with help of Android Studio for Beginners part 3 tutorial video:
+ * https://www.youtube.com/watch?v=rdGpT1pIJlw */
 
 package com.example.mymobileapplication;
 

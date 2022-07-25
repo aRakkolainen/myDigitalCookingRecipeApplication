@@ -1,9 +1,11 @@
 /* Created by: Aino Räkköläinen 22.7.2022
-* Purpose:
+* Purpose: This activity is used for displaying the recipe
+* visually on the screen.
 * Sources:
 * Reading file in android studio is done with the help of this tutorial video:
- * https://www.youtube.com/watch?v=Ir9qeQqw-48
- * Operators in Java:*/
+* https://www.youtube.com/watch?v=Ir9qeQqw-48
+* Making a custom listView with a help of Android Studio for Beginners part 3 tutorial video:
+ * https://www.youtube.com/watch?v=rdGpT1pIJlw */
 package com.example.mymobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;

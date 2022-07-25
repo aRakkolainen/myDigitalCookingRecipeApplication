@@ -1,4 +1,5 @@
 /* Created by: Aino Räkköläinen Edited: 4.7.2022
+* Purpose: This is used for implementing basic login system in this app.
 * Sources:
 * Reading file in android studio is done with the help of this tutorial video:
 * https://www.youtube.com/watch?v=Ir9qeQqw-48
@@ -35,9 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     Context context;
     CharSequence text;
     String username;
-    String userName;
     String password;
-    String email;
     String logInInfo;
     String wantedEmail;
     String wantedUsername;

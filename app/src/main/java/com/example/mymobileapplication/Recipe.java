@@ -1,3 +1,6 @@
+/* Created by: Aino Räkköläinen Last edited: 25.7.2022
+* Purpose: Making recipe objects
+* */
 package com.example.mymobileapplication;
 
 import java.util.ArrayList;

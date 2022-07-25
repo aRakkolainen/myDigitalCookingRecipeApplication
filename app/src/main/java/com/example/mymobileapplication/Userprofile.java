@@ -1,4 +1,4 @@
-/*Created by: Aino Räkköläinen
+/* Created by: Aino Räkköläinen Last edited: 25.7.2022 (Only this comment edited)
 * Purpose: class for making Userprofile objects that have attributes:
 * username, email and password. */
 package com.example.mymobileapplication;

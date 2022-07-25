@@ -1,7 +1,9 @@
 /*Created by: Aino Räkköläinen 11.7.2022
+* Purpose: This is used as a adapter for custom spinner for selecting the profile picture
 * Sources:
-* How to make custom spinner with images and text:
-* https://www.youtube.com/watch?v=wAOnzE2MjAM*/
+* How to make custom spinner with images and text (Basically this whole adapter is created
+* according to this tutorial video:
+* https://www.youtube.com/watch?v=wAOnzE2MjAM */
 
 package com.example.mymobileapplication;
 
@@ -22,7 +24,7 @@ public class ProfilepictureAdapter extends ArrayAdapter<String> {
     String[] names;
     int[] images;
     public ProfilepictureAdapter(Context context, String[] names, int[] images){
-        super(context, R.layout.profile_pictures_list, names);
+        super(context, R.layout.profile_pictures, names);
         this.context = context;
         this.names = names;
         this.images = images;

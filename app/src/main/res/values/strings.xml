@@ -1,22 +1,5 @@
 <resources>
     <string name="app_name">My Mobile Application</string>
-    <string name="search">Search</string>
-    <string-array name="profilepictures">
-        <item>Choose a profile picture</item>
-        <item>mandarin</item>
-        <item>apple</item>
-        <item>pineapple</item>
-        <item>coffee</item>
-        <item>ice cream</item>
-    </string-array>
-    <string-array name="profilepics">
-        <item>R.drawable.profilepicture_mandarin</item>
-        <item>R.drawable.profilepicture_apple</item>
-        <item>R.drawable.profilepicture_pineapple</item>
-        <item>R.drawable.profilepicture_coffee</item>
-        <item>R.drawable.profilepicture_icecream</item>
-    </string-array>
-
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -62,6 +45,9 @@
     <string name="steps">Steps</string>
     <string name="give_amount_unit">Give amount + unit</string>
     <string name="show_preview">Show preview</string>
-    <string name="profilepicture">Profilepicture</string>
-    <string name="username">Username:</string>
+    <string name="profilepicture">Profile picture</string>
+    <string name="groceryList">groceryList</string>
+    <string name="profilepictures">profile pictures</string>
+    <string name="step">Step</string>
+    <string name="search">Search</string>
 </resources>

@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageViewProfile"
-        android:layout_width="82dp"
-        android:layout_height="75dp"
+        android:layout_width="74dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="0dp"
         android:layout_weight="1"
         android:contentDescription="TODO"
@@ -19,8 +19,8 @@
         android:id="@+id/textViewDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
         android:layout_weight="1"
         android:text="Description"
         android:textColor="@color/black"
