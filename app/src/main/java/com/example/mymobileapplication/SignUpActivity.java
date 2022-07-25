@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
                     File dir = getFilesDir();
                     File file = new File(dir, filename);
                     if(file.exists()) {
-                        Toast.makeText(context, "User with this email already exists, use other email address", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "User with this email already exists, use other email address!", Toast.LENGTH_LONG).show();
                     } else {
                         Userprofile newUserprofile = new Userprofile(username, emailAddress, password);
                         String userInfo = newUserprofile.getUsername() + ";" + newUserprofile.getEmail() + ";" + newUserprofile.getPassword() + ";" + profilePic;

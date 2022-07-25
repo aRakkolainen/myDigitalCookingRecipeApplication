@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     String filename;
     String[] user;
     int duration = Toast.LENGTH_SHORT;
-    String profilePic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
