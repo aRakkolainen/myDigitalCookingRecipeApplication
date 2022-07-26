@@ -60,7 +60,12 @@ public class ItemAdapter extends BaseAdapter {
             v = mInFlater.inflate(R.layout.my_detailed_grocery_list, null);
         }
         TextView itemTextView = (TextView) v.findViewById(R.id.itemTextView);
-        itemTextView.setText(items.get(i));
+        String line = items.get(i);
+        if (line.contains("1")) {
+            itemTextView.setText(items.get(i));
+        } else {
+            itemTextView.setText(items.get(i) + "s");
+        }
         CheckBox checkBoxItem = (CheckBox) v.findViewById(R.id.itemCheckBox);
         checkBoxItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
