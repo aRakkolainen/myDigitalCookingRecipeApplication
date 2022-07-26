@@ -17,4 +17,12 @@ public class Ingredient {
     public String getAmount() {
         return amount;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 }

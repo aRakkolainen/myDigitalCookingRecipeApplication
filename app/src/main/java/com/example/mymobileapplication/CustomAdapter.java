@@ -1,4 +1,4 @@
-/*Created by: Aino Räkköläinen Last edited: 22.7.2022
+/*Created by: Aino Räkköläinen Last edited: 26.7.2022
 * Purpose: This is a custom adapter made for showing listview
 * for ingredients when adding a new recipe. This is needed to make custom
  * listView according to the Android Studio tutorial video part 3.
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,6 +23,8 @@ public class CustomAdapter extends BaseAdapter {
     LayoutInflater mInFlater;
     ArrayList<Ingredient> ingredientArrayList;
     Context context;
+    int currentValue;
+    int newValue;
     public CustomAdapter(Context c, ArrayList<Ingredient> i) {
         context = c;
         ingredientArrayList=i;
@@ -58,6 +61,7 @@ public class CustomAdapter extends BaseAdapter {
             }
         });
         ingredientInfo.setText(ingredientArrayList.get(i).getAmount() + " " + ingredientArrayList.get(i).getName());
+
         return v;
     }
 }
